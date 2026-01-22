@@ -1,7 +1,7 @@
-# 🏗️ Engenius
-> Sistema de Gerenciamento de Projetos Civis – TCC 
+# 🧩 ConnectDesk
+> Plataforma de Service Desk e Gestão de Serviços de TI – TCC  
 
-> ⚠️Sistema e documentação em construção ⚠️ 
+> ⚠️ Sistema e documentação em construção ⚠️  
 
 [![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow?style=for-the-badge)]()  
 [![Made With](https://img.shields.io/badge/made%20with-❤-red?style=for-the-badge)]()  
@@ -9,17 +9,19 @@
 ---
 
 ## 📌 Sobre o Projeto
-O **Engenius** é um sistema desenvolvido como Trabalho de Conclusão de Curso, com foco em oferecer uma solução prática para o **gerenciamento de obras e projetos civis**.  
+O **ConnectDesk** é uma plataforma desenvolvida como **Trabalho de Conclusão de Curso (TCC)**, com foco na **gestão de serviços de TI (ITSM)** e na melhoria da **experiência do usuário e do funcionário** no atendimento de Service Desk.
 
-Com ele, engenheiros, arquitetos e gestores podem **planejar, acompanhar e organizar** todas as etapas de um projeto, garantindo **eficiência, transparência e redução de custos**.  
+A solução visa centralizar solicitações, organizar demandas, otimizar a comunicação síncrona e assíncrona e apoiar a tomada de decisão por meio de **indicadores como SLA e KPI**, promovendo mais eficiência, transparência e satisfação para todos os envolvidos.
 
 ---
 
 ## ✨ Funcionalidades
-✅ Cadastro e gerenciamento de projetos  
-✅ Controle de prazos e cronogramas  
-✅ Gestão de equipes e atribuição de tarefas   
-✅ Relatórios e indicadores de progresso  
+✅ Abertura e acompanhamento de chamados  
+✅ Comunicação síncrona (chat) e assíncrona (histórico)  
+✅ Gestão de SLA e prioridades  
+✅ Indicadores de desempenho (KPI)  
+✅ Organização de demandas para equipes de suporte  
+✅ Histórico de atendimentos e relatórios  
 
 ---
 
@@ -35,30 +37,23 @@ Com ele, engenheiros, arquitetos e gestores podem **planejar, acompanhar e organ
 
 ## 📂 Estrutura do Projeto
 ```bash
-engenious/
+connectdesk/
  ├── backend/        
  ├── frontend/       
  ├── database/       
- └── docs/           
+ └── docs/
 ```
+---
+
+## 🎯 Objetivo do Projeto
+Proporcionar uma solução que melhore a qualidade do atendimento de TI, reduza retrabalho, aumente a produtividade das equipes de suporte e ofereça uma experiência mais clara, eficiente e humana para usuários e funcionários.
 
 ---
 
-## 📊 Roadmap
-- ☑️Estrutura inicial do projeto
-- 🟪CRUD de projetos e equipes
-- 🟪Sistema de relatórios avançados
-- 🟪Integração com APIs externas (ex: clima)
-
---- 
-
 ## 👨‍💻 Autores
-- **Eva Yasmim Peniche de Jesus** - Desenvolvedora
-
-- **Henrique Lima Kopcak** - Desenvolvedor
-
-- **Maria Eduarda Lucena Fernandes** - Desenvolvedora
-
 - **Verônica Santos Salgado** - Desenvolvedora
 
-- **Yasmin da Silva Santos** - Desenvolvedora
+- **Yasmin da Silva Santos** – Desenvolvedora
+
+- **Gustavo Leão Gomes Galazo** – Cybersecurity
+
