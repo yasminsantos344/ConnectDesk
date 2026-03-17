@@ -54,5 +54,3 @@ Proporcionar uma solução que melhore a qualidade do atendimento de TI, reduza 
 
 - **Yasmin da Silva Santos** – Desenvolvedora
 
-- **Gustavo Leão Gomes Galazo** – Cybersecurity
-
