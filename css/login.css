@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+}
+
+h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+input[type='button']{
+    width: 70%;
+    color: white;
+    background-color: rgb(12, 153, 230);
+    border: none;
+    cursor: pointer;
+}

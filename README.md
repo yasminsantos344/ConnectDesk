@@ -28,7 +28,9 @@ A solução visa centralizar solicitações, organizar demandas, otimizar a comu
 ## 🛠️ Tecnologias Utilizadas
 
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
-
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ---
 
@@ -51,6 +53,4 @@ Proporcionar uma solução que melhore a qualidade do atendimento de TI, reduza 
 - **Verônica Santos Salgado** - Desenvolvedora
 
 - **Yasmin da Silva Santos** – Desenvolvedora
-
-- **Gustavo Leão Gomes Galazo** – Cybersecurity
 
