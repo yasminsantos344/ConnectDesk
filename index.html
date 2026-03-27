@@ -3,89 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../ConnectDesk/css/styles.css">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Conheça ConnectDesk</title>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="../assets/logo.png" alt="" srcset="">
-        </div>
+    <header class="container-fluid py-2">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <img src="assets/logo.png" style="max-width: 70px;">
 
-        <nav>            
-            <a href="#ConnectDesk">ConnectDesk</a>
-            <a href="">Planos</a>
-            <a href="">Contato</a>
+                <!-- botão mobile -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center" id="menu">
+                    <div class="navbar-nav gap-3 text-center">
+                        <a class="nav-link" href="#connectdesk">ConnectDesk</a>
+                        <a class="nav-link" href="#planos">Planos</a>
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </div>
+                </div>
+
+                <div class="d-none d-lg-block">
+                    <a href="#" class="fw-semibold">Começar agora</a>
+                </div>
+            </div>
         </nav>
-
-        <div class="cadastro">
-            <a href=""><u>Começar agora</u></a>
-        </div>
     </header>
 
-    <main>
-        <div class="left">
-            <div class="frase-efeito">
-                <h1>Seu suporte,</h1>
-                <h1 id="scd-h1">mais eficiente</h1>
-
-                <p><span>-40%</span> no tempo de respostas</p>            
-            </div>
-        </div>
-
-        <div class="right">
-            <div class="opcoes">
-                <p>
-                    Gerencie tickets, automatize processos e acompanhe métricas 
-                    em tempo real com uma solução completa de service desk
-                </p>
-
-                <div class="actions-links">
-                    <button><a href="">Começar agora</a></button> 
-                    <a href="" id="saiba-mais"><u>Saiba mais</u></a>
+    <main class="container py-5">
+        <div class="row align-items-center text-center text-md-start">
+            <!-- TEXTO -->
+            <div class="col-md-6 order-2 order-md-1">
+                <div class="frase-efeito mx-auto">
+                    <h1>Seu suporte,</h1>
+                    <h1 id="scd-h1">mais eficiente</h1>
+                    <p><span>-40%</span> no tempo de respostas</p>
                 </div>
             </div>
 
-            <img src="../assets/abstract_image_index_page.png" alt="">
+            <!-- IMAGEM -->
+            <div class="col-md-6 order-1 order-md-2 text-center">
+                <img src="assets/abstract_image_index_page.png" class="img-fluid mb-4">
+
+                <div class="opcoes mx-auto">
+                    <p>
+                        Gerencie tickets, automatize processos e acompanhe métricas 
+                        em tempo real com uma solução completa de service desk
+                    </p>
+
+                    <div class="d-flex flex-column flex-md-row gap-3 justify-content-center justify-content-md-start">
+                        <button class="btn btn-primary">Começar agora</button>
+                        <a href="#" class="text-decoration-underline">Saiba mais</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
-    <h1>ConnectDesk</h1>
-    <section class="about" id="ConnectDesk">
-        
+    
+    <section class="container-fluid py-5 mb-5" id="connectdesk">
+        <h1 class="text-left mb-5">ConnectDesk</h1>
 
-        <div class="card1">
-            <h1>Gestão de Chamados</h1>
-            <p>Crie, organize e acompanhe tickets em tempo real com status claros e fluxo efieciente</p>
-        </div>
+        <div class="row g-4">
 
-        <div class="card2">
-            <h1>Automação de Processos</h1>
-            <p>Automatize atribuições, respostas e fluxos para reduzir tarefas manuais e ganhar produtividade</p>
-            
-        </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card p-3 h-100 shadow p-3 mb-5 bg-body rounded">
+                    <h2>Gestão de Chamados</h2>
+                    <p>Crie, organize e acompanhe tickets em tempo real com status claros</p>
+                </div>
+            </div>
 
-        <div class="card3">
-            <h1>Relatório e Métricoas</h1>
-            <p>Acompanhe desempenho com dashboards e indicadores como SLA, tempo de resposya e resolução</p>
-        </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card p-3 h-100 shadow p-3 mb-5 bg-body rounded">
+                    <h2>Automação de Processos</h2>
+                    <p>Automatize fluxos e reduza tarefas manuais</p>
+                </div>
+            </div>
 
-        <div class="card4">
-            <h1>Gestão de Equipes</h1>
-            <p>Distribua chamados entre agentes, monitore atividades e melhore a colaboração do time</p>
-        </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card p-3 h-100 shadow p-3 mb-5 bg-body rounded">
+                    <h2>Relatórios e Métricas</h2>
+                    <p>Acompanhe SLA, tempo de resposta e desempenho</p>
+                </div>
+            </div>
 
-        <div class="card5">
-            <h1>Notificações em tempo real</h1>
-            <p>Receba atualizações instantâneas sobre novos chamados e mudanças de status</p>
-        </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card p-3 h-100 shadow p-3 mb-5 bg-body rounded">
+                    <h2>Gestão de Equipes</h2>
+                    <p>Distribua chamados e monitore atividades</p>
+                </div>
+            </div>
 
-        <div class="card6">
-            <h1>Controle e Segurança</h1>
-            <p>Gerencie permissões de acesso e mantenha os dados do sistema protegidos</p>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card p-3 h-100 shadow p-3 mb-5 bg-body rounded">
+                    <h2>Notificações</h2>
+                    <p>Receba atualizações em tempo real</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card p-3 h-100 shadow p-3 mb-5 bg-body rounded">
+                    <h2>Segurança</h2>
+                    <p>Controle de acesso e proteção de dados</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
+    <section class="container-fluid p-0" id="planos">
+        <h1 class="text-left">Planos</h1>
+
+    <div class="table-responsive pb-5">
+        <div class="d-flex justify-content-center">
+            <table class=" w-auto text-center">
+                    <thead>
+                        <tr>
+                            <th>Recurso</th>
+                            <th>Basic</th>
+                            <th>Pro</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Recurso">Gestão de Chamados</td>
+                            <td data-label="Basic">✅</td>
+                            <td data-label="Pro">✅</td>
+                            <td data-label="Enterprise">✅</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Recurso">Status de ticket</td>
+                            <td data-label="Basic">✅</td>
+                            <td data-label="Pro">✅</td>
+                            <td data-label="Enterprise">✅</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Recurso">Atribuição de chamados</td>
+                            <td data-label="Basic">✅</td>
+                            <td data-label="Pro">✅</td>
+                            <td data-label="Enterprise">✅</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Recurso">Histórico de atendimentos</td>
+                            <td data-label="Basic">✅</td>
+                            <td data-label="Pro">✅</td>
+                            <td data-label="Enterprise">✅</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Recurso">Notificações</td>
+                            <td data-label="Basic">✅</td>
+                            <td data-label="Pro">✅</td>
+                            <td data-label="Enterprise">✅</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Recurso">Automação de Processos</td>
+                            <td data-label="Basic">❌</td>
+                            <td data-label="Pro">✅</td>
+                            <td data-label="Enterprise">✅</td>
+                        </tr>        
+                        <tr>
+                            <td data-label="Recurso">ChatBot</td>
+                            <td data-label="Basic">❌</td>
+                            <td data-label="Pro">✅</td>
+                            <td data-label="Enterprise">✅</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Recurso">Respostas automáticas</td>
+                            <td data-label="Basic">❌</td>
+                            <td data-label="Pro">✅</td>
+                            <td data-label="Enterprise">✅</td>  
+                        </tr>
+                        <tr>
+                            <td data-label="Enterprise">Triagem inteligente</td>
+                            <td data-label="Basic">❌</td>
+                            <td data-label="Pro">✅</td>
+                            <td data-label="Enterprise">✅</td>
+                        </tr> 
+                        <tr>
+                            <td data-label="Recurso">Chat online</td>
+                            <td data-label="Basic">❌</td>
+                            <td data-label="Pro">❌</td>
+                            <td data-label="Enterprise">✅</td>
+                        </tr>  
+                        <tr>
+                            <td data-label="Recurso">Atendimento humano simultâneo</td>
+                            <td data-label="Basic">❌</td>
+                            <td data-label="Pro">❌</td>
+                            <td data-label="Enterprise">✅</td>
+                        </tr>                                                             
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <p>Não sabe qual escolher?</p>
+            <div class="table-responsive pb-5">
+             <table class="ms-5 text-center w-75">
+                <thead>
+                    <tr>
+                        <th>Plano</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Basic</strong></td>
+                        <td>
+                            Ideal para equipes que estão começando a estruturar o suporte. 
+                            Inclui gestão completa de chamados, organização de tickets e controle básico de atendimento.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pro</strong></td>
+                        <td>
+                            Perfeito para escalar o suporte com eficiência. 
+                            Inclui automação de processos, chatbot, respostas automáticas e triagem inteligente para reduzir o tempo de resposta.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Enterprise</strong></td>
+                        <td>
+                            Solução completa para operações avançadas. 
+                            Inclui todos os recursos do Pro + chat online e atendimento humano simultâneo para máxima performance e experiência do usuário.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="contato" class="container py-5">
+        <div class="text-center mb-5">
+            <h1>Contato</h1>
+            <p class="text-muted">
+                Entre em contato conosco para saber mais sobre nossos planos e como podemos ajudar a transformar seu suporte.
+            </p>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <form class="form-contato p-4 shadow-sm w-100">
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="name" placeholder="Seu nome">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Seu email">
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 mt-3">
+                    Entrar em contato
+                </button>
+
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container-fluid py-4">
+            <div class="row align-items-center">
+
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2026 ConnectDesk. Todos os direitos reservados.</p>
+                </div>
+
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-decoration-none me-3">Política de Privacidade</a>
+                    <a href="#" class="text-decoration-none">Termos de Uso</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </html>
