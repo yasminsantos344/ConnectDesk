@@ -18,6 +18,7 @@
     --purple-blue: #5E60CE;
     --ocean-blue: #4EA8DE;
     --white: #F8F9FA;
+    --font: "Plus Jakarta Sans", sans-serif;
 }
 
 /* ========================= */
@@ -100,6 +101,11 @@ main img {
     border: none;
     border-radius: 15px;
     transition: 0.3s;
+    font-family: var(--font);
+}
+
+.card h2{
+    font-weight: 600;
 }
 
 .card:hover {
