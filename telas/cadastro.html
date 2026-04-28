@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/cadastro.css">
     <title>Cadastre-se</title>
 </head>
@@ -13,7 +14,7 @@
         <p>Insira seus dados para criar sua conta</p>
     </header>
     <main>
-        <section class="container w-75">
+        <section class="container">
             <div class="row">
                 <div class="col" id="dados">
                     <hr>
@@ -32,34 +33,34 @@
     </main>
 
     <article class="mt-4">
-        <form class="container-fluid w-75" id="forms_dados" style="display: none;">
+        <form class="container-fluid w-75" id="forms_dados">
             <div class="row g-3">
                 <div class="col-12">
                     <label for="razao_social" class="form-label">
                     <span>*</span> Razão Social
                     </label>
-                    <input type="text" name="razao_social" id="razao_social" class="form-control">
+                    <input type="text" name="razao_social" id="razao_social" class="form-control" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="cnpj" class="form-label">
                     <span>*</span> CNPJ
                     </label>
-                    <input type="text" name="cnpj" id="cnpj" class="form-control">
+                    <input type="text" name="cnpj" id="cnpj" class="form-control" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="nome_fantasia" class="form-label">
                     Nome Fantasia
                     </label>
-                    <input type="text" name="nome_fantasia" id="nome_fantasia" class="form-control">
+                    <input type="text" name="nome_fantasia" id="nome_fantasia" class="form-control" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="inscricao_estadual" class="form-label">
                     Inscrição Estadual
                     </label>
-                    <input type="file" name="inscricao_estadual" id="inscricao_estadual" class="form-control">
+                    <input type="file" name="inscricao_estadual" id="inscricao_estadual" class="form-control" >
                 </div>
 
                 <div class="col-md-6 d-flex align-items-end">
@@ -73,7 +74,7 @@
                     <label for="inscricao_municipal" class="form-label">
                     <span>*</span> Inscrição Municipal
                     </label>
-                    <input type="file" name="inscricao_municipal" id="inscricao_municipal" class="form-control">
+                    <input type="file" name="inscricao_municipal" id="inscricao_municipal" class="form-control" required>
                 </div>
 
                 <div class="col-12">
@@ -84,21 +85,21 @@
                     <label for="email_adm" class="form-label">
                     <span>*</span> Email do Administrador
                     </label>
-                    <input type="email" name="email_adm" id="email_adm" class="form-control">
+                    <input type="email" name="email_adm" id="email_adm" class="form-control" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="senha_adm" class="form-label">
                     <span>*</span> Senha do Administrador
                     </label>
-                    <input type="password" name="senha_adm" id="senha_adm" class="form-control">
+                    <input type="password" name="senha_adm" id="senha_adm" class="form-control" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="confirmar_senha_adm" class="form-label">
                     <span>*</span> Confirmar Senha
                     </label>
-                    <input type="password" name="confirmar_senha_adm" id="confirmar_senha_adm" class="form-control">
+                    <input type="password" name="confirmar_senha_adm" id="confirmar_senha_adm" class="form-control" required>
                 </div>
 
                 <div class="col-12 d-flex justify-content-between align-items-center mt-3">
@@ -106,14 +107,14 @@
                     Já tem cadastro? <a href="#">Faça login</a>
                     </p>
 
-                    <button type="submit">
+                    <button type="submit" id="btn_proximo_dados">
                     Próximo
                     </button>
                 </div>
             </div>
         </form>
 
-        <form id="forms_planos" class="d-none flex-column align-items-center gap-4 mt-4" >
+        <form id="forms_planos" class="flex-column align-items-center gap-4 mt-4" >
             <input type="radio" name="plano" id="plano_basico">
             <div style="width: max-content;" class="d-flex flex-row border rounded p-4">
                 <div class="me-5"> <!-- características -->
@@ -180,18 +181,155 @@
                     <p>* Dois meses gratuíto para planos anuais</p>
                 </div>
             </div>
+
+            <button id="btn_voltar_planos" class="mt-5 me-5">
+                Voltar
+            </button>
             
-            <button type="submit">
+            <button type="submit" id="btn_proximo_planos" class="ms-5">
                 Próximo
             </button>
         </form>
 
         <form action="" id="forms_pagamento">
-            
+            <button type="button" id="btn_voltar_pagamento" class="mt-5 me-5">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+
+            <h5 class="fw-bold mb-3">Dados para emissão fiscal</h5>
+
+            <div class="dropdown mb-4">
+                <button 
+                    class="btn btn-light border d-flex align-items-center w-100 p-3 gap-3 shadow-sm" 
+                    type="button" 
+                    id="dropdownMenuButton1" 
+                    data-bs-toggle="dropdown"
+                >
+                    <i class="bi bi-file-earmark fs-1"></i>
+
+                    <div class="text-start flex-grow-1">
+                    <div class="fw-semibold">Nome Empresa</div>
+                    <small class="text-muted">CNPJ: 12.345.678/0001-90</small>
+                    </div>
+
+                    <i class="bi bi-chevron-down text-muted"></i>
+                </button>
+                
+                <div class="dropdown-menu p-4 shadow border-0 w-100">
+                    <h6 class="fw-bold mb-2">Nome Empresa</h6>
+                    <p class="mb-1 text-muted">CNPJ: 12.345.678/0001-90</p>
+                    <p class="mb-1 text-muted">Inscrição Estadual: ...</p>
+                    <p class="mb-1 text-muted">Inscrição Municipal: ...</p>
+                    <p class="mb-2 text-muted">Endereço: Rua Exemplo, 123</p>
+                    <p class="mb-3 text-muted">Regime tributário: ...</p>
+
+                    <hr>
+
+                    <p class="mb-1"><strong>Produto:</strong> Plano Pro - ConnectDesk</p>
+                    <p class="mb-1"><strong>Valor:</strong> R$ 869,00</p>
+                    <p class="mb-0"><strong>Código:</strong> 123456</p>
+                </div>
+            </div>
+
+
+            <h5 class="fw-bold mb-3">Forma de pagamento</h5>
+
+            <div class="row">
+
+            <!-- PAGAMENTOS -->
+            <div class="col-md-7">
+                <div class="d-flex flex-column gap-3">
+
+                <!-- Cartão -->
+                <label class="border rounded p-3 d-flex align-items-center gap-3 payment-option">
+                    <input type="radio" name="forma_pag" class="form-check-input">
+                    <i class="bi bi-credit-card-2-back-fill fs-3"></i>
+                    <div class="fw-semibold">Cartão de Crédito</div>
+                </label>
+
+                <!-- Boleto -->
+                <label class="border rounded p-3 payment-option">
+                    <div class="d-flex align-items-center gap-3">
+                    <input type="radio" name="forma_pag" class="form-check-input">
+                    <i class="bi bi-upc-scan fs-3"></i>
+                    <div class="fw-semibold">Boleto Bancário</div>
+                    </div>
+                    <small class="text-muted d-block text-end mt-1">
+                    Vencimento em 5 dias úteis
+                    </small>
+                </label>
+
+                <!-- Pix -->
+                <label class="border rounded p-3 payment-option">
+                    <div class="d-flex align-items-center gap-3">
+                    <input type="radio" name="forma_pag" class="form-check-input">
+
+                    <svg width="28" height="28" fill="currentColor" viewBox="0 0 30 30">
+                        <path d="M 15 1.0996094 C 13.975 1.0996094 12.949922 1.4895313 12.169922 2.2695312 L 7.1894531 7.25 L 7.3398438 7.25 C 8.6098437 7.25 9.7992188 7.740625 10.699219 8.640625 L 14.189453 12.130859 C 14.639453 12.570859 15.360547 12.570859 15.810547 12.130859 L 19.300781 8.640625 C 20.200781 7.740625 21.390156 7.25 22.660156 7.25 L 22.810547 7.25 L 17.830078 2.2695312 C 17.050078 1.4895313 16.025 1.0996094 15 1.0996094 z M 5.6894531 8.75 L 2.2695312 12.169922 C 0.70953125 13.729922 0.70953125 16.270078 2.2695312 17.830078 L 5.6894531 21.25 L 7.3398438 21.25 C 8.2098438 21.25 9.030625 20.910781 9.640625 20.300781 L 13.130859 16.810547 C 14.160859 15.780547 15.839141 15.780547 16.869141 16.810547 L 20.359375 20.300781 C 20.969375 20.910781 21.790156 21.25 22.660156 21.25 L 24.310547 21.25 L 27.730469 17.830078 C 29.290469 16.270078 29.290469 13.729922 27.730469 12.169922 L 24.310547 8.75 L 22.660156 8.75 C 21.790156 8.75 20.969375 9.0892188 20.359375 9.6992188 L 16.869141 13.189453 C 16.359141 13.699453 15.68 13.960938 15 13.960938 C 14.32 13.960938 13.640859 13.699453 13.130859 13.189453 L 9.640625 9.6992188 C 9.030625 9.0892187 8.2098437 8.75 7.3398438 8.75 L 5.6894531 8.75 z M 15 17.539062 C 14.7075 17.539062 14.414453 17.649141 14.189453 17.869141 L 10.699219 21.359375 C 9.7992188 22.259375 8.6098437 22.75 7.3398438 22.75 L 7.1894531 22.75 L 12.169922 27.730469 C 13.729922 29.290469 16.270078 29.290469 17.830078 27.730469 L 22.810547 22.75 L 22.660156 22.75 C 21.390156 22.75 20.200781 22.259375 19.300781 21.359375 L 15.810547 17.869141 C 15.585547 17.649141 15.2925 17.539062 15 17.539062 z"></path>
+                    </svg>
+
+                    <div class="fw-semibold">Pix</div>
+                    </div>
+
+                    <small class="text-success d-block text-end mt-1">
+                    Aprovação imediata
+                    </small>
+
+                    <ol class="mt-2 small text-muted mb-0">
+                    <li>Um código Pix será gerado</li>
+                    <li>Pague pelo app do seu banco</li>
+                    </ol>
+                </label>
+
+                </div>
+            </div>
+
+            <!-- RESUMO -->
+            <div class="col-md-5">
+                <div class="price-summary p-4 rounded border shadow-sm">
+
+                <h6 class="fw-bold mb-0">PLANO PRO</h6>
+                <small class="text-muted">Anual</small>
+
+                <hr>
+
+                <!-- LINHAS ALINHADAS -->
+                <div class="d-flex justify-content-between">
+                    <span>Subtotal</span>
+                    <span class="fw-bold">R$ 948,00</span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <span>Desconto</span>
+                    <span class="fw-bold text-success">- R$ 79,00</span>
+                </div>
+
+                <hr>
+
+                <div class="d-flex justify-content-between">
+                    <strong>Total</strong>
+                    <strong>R$ 869,00</strong>
+                </div>
+
+                </div>
+
+                <button type="button" class="btn-finalizar w-100 mt-5" id="btn_finalizar_pagamento"><b>Finalizar</b></button>
+            </div>
+            </div>
+            <div id="success-card" class="success-card shadow">
+                <div class="d-flex align-items-center gap-3">
+                    <i class="bi bi-check-circle-fill text-success fs-2"></i>
+                    <div>
+                        <h6 class="mb-0 fw-bold">Cadastro finalizado!</h6>
+                        <small class="text-muted">Tudo certo com sua conta 🎉</small>
+                    </div>
+                </div>
+            </div>
         </form>
     </article>
 
 
 </body>
 <script src="../js/cadastro.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>

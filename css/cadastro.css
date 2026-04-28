@@ -41,7 +41,7 @@ button:hover{
     border: none;
     border-radius: 50px;
     height: 3px;
-    background-color: var(--ocean-blue);
+    background-color: #006eb2;
 }
 
 .dados_active b {
@@ -52,12 +52,120 @@ button:hover{
     font-weight: bold;
 }
 
+
 /* Planos */
 
 #forms_planos span{
     color: var(--ocean-blue);
 }
 
-#forms_planos hr{
-    
+.planos_active hr {
+    border: none;
+    border-radius: 50px;
+    height: 3px;
+    background-color: #006eb2;
+}
+
+.planos_active b {
+    color: var(--ocean-blue);
+}
+
+.planos_active p {
+    font-weight: bold;
+}
+
+
+/* Pagamento */
+
+.pagamento_active hr {
+    border: none;
+    border-radius: 50px;
+    height: 3px;
+    background-color: #006eb2;
+}
+
+.pagamento_active b {
+    color: var(--ocean-blue);
+}
+
+.pagamento_active p {
+    font-weight: bold;
+}
+
+#dropdownMenuButton1{
+    background: none;
+    color: var(--text-color);
+    border: 1px solid #c9c9c9;
+}
+
+.icone path {
+  fill: #4f4f4f;
+}
+
+.payment-option {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.payment-option:hover {
+  border-color: #0d6efd;
+  background-color: #e3e3e3;
+}
+
+.payment-option input {
+  cursor: pointer;
+}
+
+.price-summary{
+    background-color: #e3e3e3;
+    height: fit-content;
+}
+
+.price-summary span{
+    color: var(--text-color);
+}
+
+.btn-finalizar{
+    font-size: 1.5rem;
+    background-color: var(--ocean-blue);
+}
+
+#btn_voltar_planos{
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+#btn_voltar_planos:hover{
+    background-color: rgba(235, 235, 235, 0.413);
+    border: 1px solid #cac8c8;
+}
+
+#btn_voltar_pagamento{
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+#btn_voltar_pagamento:hover{
+    background-color: rgba(235, 235, 235, 0.413);
+    border: 1px solid #cac8c8;
+}
+
+.success-card {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 16px 20px;
+    min-width: 280px;
+    z-index: 9999;
+
+    transform: translateY(120%);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.success-card.show {
+    transform: translateY(0);
+    opacity: 1;
 }
