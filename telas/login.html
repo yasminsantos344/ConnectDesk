@@ -1,35 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../telas/css/login.css">
-    <title>Rede Animal</title>
+    <title>ConnectDesk - Login</title>
+
+    <link rel="stylesheet" href="/css/login.css">
 </head>
-<body>  
-<main>
-    <section class="paginaInicial">
-        <h1> Bem vindo de volta</h1>
-        <p>insira seu email e senha para acessar sua conta</p>
+<body>
 
-        <label for="email">email</label><br>
-        <input type="email" name="" id=""><br>
+    <div class="container">
 
-        <label for="senha">senha</label><br>
-        <input type="password"><br>
+        <h1 class="login-titulo">Log in</h1>
 
-        <input type="checkbox" name="Lembre-de-mim" id="">
-        <label for="">Lembre de mim</label> <a href="">Esqueceu a senha?</a><br>
+        <!-- Painel Login -->
+        <div class="login-panel">
+            <h1>Acesso</h1>
 
-        <input type="button" value="Log in">
-        <p>Não tem uma conta <a href="">Cadastre-se</a></p>
+            <div class="caixa-login">
+                <input type="email" id="email" placeholder="Email">
+            </div>
 
-    </section class="propaganda">
-    <h1>Organize seus chamados</h1><br>
-    <img src="" alt="" srcset="">
-    <section>
+            <div class="caixa-login">
+                <input type="password" id="senha" placeholder="Senha">
+            </div>
 
-    </section>
-</main>
+            <a href="#" class="esqueci-senha">Esqueci a senha</a>
+
+            <button class="btn acessar" onclick="validarCampos()">
+                Acessar
+            </button>
+
+            <p class="frase-cadastro">
+            Não possui conta? <a href="#" class="me-cadastrar">Me cadastrar</a>
+            </p>
+            
+        </div>
+
+    </div>
+
+    <!-- Janela Sucesso -->
+    <div class="janela" id="janelaSucesso">
+        <div class="conteudo-janela">
+            <h2>Sucesso</h2>
+            <button onclick="fecharJanela()">OK</button>
+        </div>
+    </div>
+
+    <script src="/js/login.js"></script>
 </body>
 </html>

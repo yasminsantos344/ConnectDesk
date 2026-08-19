@@ -1,28 +1,227 @@
 *{
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+
+    background-image: url('/assets/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    width: 90%;
+    max-width: 1100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-titulo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    color: #5b21b6;
+    font-size: 40px;
+    font-weight: bold;
     margin: 0;
 }
 
-main{
-    display: grid;
-    grid-template-columns: 50% 50%;
+/* PAINEL LOGIN */
+
+.login-panel{
+    width: 520px;   /* largura */
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+
+    padding: 40px;/*Define espaçamento de padding para todas as tags filhos dentro dele*/
+
+    border-radius: 25px;/*Arredondamento das bordas*/
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    /*0 posição horizontal, 8px posição vertical, 30px nitidez*/
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-section{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    align-items: center;
+.login-panel h1{
+    text-align: center;
+    margin-bottom: 30px;
+
+    color: #5b21b6;
+    font-size: 35px;
 }
 
-h1{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
+.caixa-login{
+    margin-bottom: 20px;
 }
-input[type='button']{
-    width: 70%;
-    color: white;
-    background-color: rgb(12, 153, 230);
+
+.caixa-login input{
+    width: 100%;
+    padding: 15px;
+
+    border-radius: 12px; /*Arredondamento das bordas*/
+    border: 2px solid transparent;
+
+    outline: none;
+
+    background-color: rgba(255,255,255,0.8);
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+/*Quando o input esta em foco/selecionado*/
+.caixa-login input:focus{
+    border-color: #7c3aed;
+}
+
+.esqueci-senha{
+    display: block;
+    text-align: center;
+
+    margin-bottom: 25px;
+
+    /*text-decoration: none;*/
+    color: #7c3aed;
+
+    font-size: 14px;
+}
+
+.me-cadastrar{
+
+    color: #7c3aed;
+
+    font-size: 14px;
+}
+
+.frase-cadastro{
+    font-size: 14px;
+
+    text-align: center;
+
+    margin-bottom: 2px;
+}
+.btn{
+    width: 100%;
+    padding: 14px;
+
     border: none;
+    border-radius: 12px;
+
     cursor: pointer;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.acessar{
+    background: linear-gradient(90deg, #7c3aed, #9333ea);
+    color: white;
+
+    margin-bottom: 15px;
+}
+
+.acessar:hover{
+    transform: scale(1.02);
+}
+
+.cadastrar{
+    background-color: white;
+    color: #7c3aed;
+
+    border: 2px solid #7c3aed;
+}
+
+.cadastrar:hover{
+    background-color: #f3e8ff;
+    transform: scale(1.02);
+
+}
+
+/* ERRO */
+
+.erro{
+    background-color: #fff3e0 !important; 
+    border: 3px solid orange !important;
+    /* O !important serve para dar prioridade máxima a uma regra CSS. */
+}
+
+/* Janela */
+
+.janela{
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background-color: rgba(0,0,0,0.5);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteudo-janela{
+    background-color: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    width: 300px;
+}
+
+.conteudo-janela h2{
+    color: #7c3aed;
+    margin-bottom: 20px;
+}
+
+.conteudo-janela button{
+    padding: 12px 30px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #7c3aed;
+    color: white;
+
+    cursor: pointer;
+}
+
+/* RESPONSIVO */
+
+@media(max-width: 700px){
+
+    .container{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .login-panel{
+        width: 100%;
+        max-width: 350px;
+    }
+
 }
