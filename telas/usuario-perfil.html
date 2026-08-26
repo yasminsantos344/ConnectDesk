@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil</title>
+
+<link rel="stylesheet" href="/css/usuario-perfil.css">
+
+<script src="https://kit.fontawesome.com/4b7f2b17a4.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="/assets/logo.png" class="img_logo">
+      </div>
+
+      <nav class="nav">
+        <a href="#" class="nav-item" data-page="dashboard">
+          <span class="nav-icon"><i class="fa-solid fa-chart-simple"></i></span> Dashboard
+        </a>
+        <a href="#" class="nav-item" data-page="tickets">
+          <span class="nav-icon"><i class="fa-solid fa-ticket"></i></span> Tickets
+        </a>
+        <a href="#" class="nav-item active" data-page="usuario-perfil">
+          <span class="nav-icon"><i class="fa-solid fa-face-smile"></i></span> Perfil
+        </a>
+        <a href="#" class="nav-item" data-page="chatbot">
+          <span class="nav-icon"><i class="fa-solid fa-robot"></i></span> ChatBot
+        </a>
+        <a href="#" class="nav-item" data-page="faq">
+          <span class="nav-icon"><i class="fa-regular fa-comments"></i></span> FAQ
+        </a>
+        <a href="#" class="nav-item" data-page="chat">
+          <span class="nav-icon"><i class="fa-solid fa-message"></i></span> Chat
+        </a>
+        <a href="#" class="nav-item" data-page="relatorio">
+          <span class="nav-icon"><i class="fa-solid fa-file"></i></span> Relatório
+        </a>
+        <a href="#" class="nav-item" data-page="usuarios">
+          <span class="nav-icon"><i class="fa-solid fa-user"></i></span> Usuários
+        </a>
+      </nav>
+
+      <nav class="nav nav-bottom">
+        <a href="#" class="nav-item" data-page="config">
+          <span class="nav-icon"><i class="fa-solid fa-gear"></i></span> Configurações
+        </a>
+        <a href="#" class="nav-item" data-page="config-avancadas">
+          <span class="nav-icon"><i class="fa-solid fa-gears"></i></span> Configurações avançadas
+        </a>
+        <a href="#" class="nav-item" data-page="ajuda">
+          <span class="nav-icon"><i class="fa-solid fa-circle-question"></i></span> Ajuda
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+
+      <!-- Topbar -->
+      <header class="topbar">
+        <button class="icon-btn" aria-label="Notificações"><i class="fa-solid fa-bell"></i></button>
+        <div class="user-chip">
+          <i class="fa-solid fa-circle-user" style="color: rgb(138, 143, 156);"></i>
+          <span id="nomeTopo">Fulano de tal</span>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main class="content">
+
+        <!-- dados do usuário -->
+        <section class="card-de-perfil">
+          <h1 class="nome-do-perfil" id="nomePerfil">Fulana de tal</h1>
+          <p class="cargo">Administrador</p>
+          <i class="fa-solid fa-circle-user icone-perfil"></i>
+        </section>
+
+        <!-- informações pessoais -->
+        <section class="card info-card">
+          <div class="info-card-header">
+            <h2>Personal Information</h2>
+            <button class="icon-btn edit-btn" id="editBtn" aria-label="Editar informações"><i class="fa-solid fa-pen-to-square"></i></button>
+          </div>
+
+          <form id="infoForm" class="info-grid">
+            <div class="field">
+              <label for="genero">Genero</label>
+              <input type="text" id="genero" name="genero" value="Feminino" disabled>
+            </div>
+            <div class="field">
+              <label for="nomeUsuario">Nome de usuário</label>
+              <input type="text" id="nomeUsuario" name="nomeUsuario" value="Fulana de tal" disabled>
+            </div>
+            <div class="field">
+              <label for="data-de-nascimento">Data de nascimento</label>
+              <input type="text" id="data-de-nascimento" name="data-de-nascimento" value="01/01/2000" disabled>
+            </div>
+
+            <div class="field">
+              <label for="userId">ID</label>
+              <input type="text" id="userId" name="userId" value="SJ53862" disabled>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" value="email@test.com" disabled>
+            </div>
+
+            <div class="field">
+              <label for="telefone">Número</label>
+              <input type="text" id="telefone" name="telefone" value="(11) 99999-9999" disabled>
+            </div>
+            <div class="field">
+              <label for="cidade">Cidade</label>
+              <input type="text" id="cidade" name="cidade" value="São Paulo" disabled>
+            </div>
+
+            <div class="form-actions" id="formActions" hidden>
+              <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="button" class="btn btn-ghost" id="cancelBtn">Cancelar</button>
+            </div>
+          </form>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="/js/usuario-perfil.js"></script>
+</body>
+</html>
+</body>
+</html>
