@@ -28,17 +28,6 @@ body{
     justify-content: center;
 }
 
-.login-titulo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-
-    color: #5b21b6;
-    font-size: 40px;
-    font-weight: bold;
-    margin: 0;
-}
-
 /* PAINEL LOGIN */
 
 .login-panel{
