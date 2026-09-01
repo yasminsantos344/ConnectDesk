@@ -99,3 +99,38 @@ CREATE TABLE tb_chamado(
     CONSTRAINT fk_id_suporte FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario),
     CONSTRAINT fk_id_empresa FOREIGN KEY (id_empresa) REFERENCES tb_empresa(id_empresa)
 );
+
+
+CREATE TABLE tb_chatbot(
+    id_chatbot          INT(6) AUTO_INCREMENT PRIMARY KEY,
+    fk_id_empresa       INT(6) NOT NULL,
+    nome_chatbot        VARCHAR(30) NOT NULL,
+    status_chatbot      VARCHAR(20) NOT NULL
+);
+
+
+CREATE TABLE tb_chatonline(
+    id_chatonline       INT(12) AUTO_INCREMENT PRIMARY KEY,
+    fk_id_chamado       INT(12) NOT NULL,
+    fk_id_cliente       INT(6) NOT NULL,
+    fk_id_suporte       INT(6) NOT NULL,
+    status_chatonline   VARCHAR(20) NOT NULL
+
+    CONSTRAINT fk_id_cliente FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario),
+    CONSTRAINT fk_id_suporte FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario),
+    CONSTRAINT fk_id_chamado FOREIGN KEY (id_chamado) REFERENCES tb_empresa(id_chamado)
+);
+
+
+CREATE TABLE tb_mensagem(
+    id_mensagem         INT(20) AUTO_INCREMENT PRIMARY KEY,
+    fk_id_chat          INT(12) NOT NULL,
+    fk_id_remetente     INT(6) NOT NULL,
+    dk_id_destinatario  INT(6) NOT NULL,
+    conteudo_mensagem   TEXT NOT NULL,
+    data_hora_mensagem  DATETIME NOT NULL
+
+    CONSTRAINT fk_id_remetente FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario),
+    CONSTRAINT dk_id_destinatario FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario),
+    CONSTRAINT fk_id_chat FOREIGN KEY (id_chatonline) REFERENCES tb_chatonline(fk_id_chatonline)
+);
