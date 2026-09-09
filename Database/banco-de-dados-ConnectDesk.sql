@@ -1,7 +1,3 @@
-/*
-
-*/
-
 CREATE DATABASE connectDeskDB;
 
 USE DATABASE connectDeskDB;
