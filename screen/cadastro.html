@@ -131,9 +131,8 @@
                 <div class="vr"></div>
 
                 <div class="ms-5">
-                    <h2><span>Valor mensal:</span> R$ 29,00 <sub>/usuário</sub></h2>
-                    <h2><span>Valor anual:</span> R$ 319,00 <sub>/usuário</sub></h2>
-                    <p>* Um mês gratuíto para planos anuais</p>
+                    <h2>A partir de <span>R$ 29,00</span> <sub>/usuário/mês</sub></h2>
+                    <p class="text-muted mb-0">Selecione este plano para escolher entre mensal ou anual</p>
                 </div>
             </div>
 
@@ -153,9 +152,8 @@
                 <div class="vr"></div>
 
                 <div class="ms-5">
-                    <h2><span>Valor mensal:</span> R$ 79,00 <sub>/usuário</sub></h2>
-                    <h2><span>Valor anual:</span> R$ 869,00 <sub>/usuário</sub></h2>
-                    <p>* Um mês gratuíto para planos anuais</p>
+                     <h2>A partir de <span>R$ 79,00</span> <sub>/usuário/mês</sub></h2>
+                    <p class="text-muted mb-0">Selecione este plano para escolher entre mensal ou anual</p>
                 </div>
             </div>
 
@@ -176,10 +174,38 @@
                 <div class="vr"></div>
                 
                 <div class="ms-5">
-                    <h2><span>Valor mensal:</span> R$ 149,00 <sub>/usuário</sub></h2>
-                    <h2><span>Valor anual:</span> R$ 1490,00 <sub>/usuário</sub></h2>
-                    <p>* Dois meses gratuíto para planos anuais</p>
+                    <h2>A partir de <span>R$ 149,00</span> <sub>/usuário/mês</sub></h2>
+                    <p class="text-muted mb-0">Selecione este plano para escolher entre mensal ou anual</p>
                 </div>
+            </div>
+
+              <!-- Tabela de tipos de assinatura, exibida após escolher um plano -->
+            <div id="tabela-assinatura-wrapper" class="w-100" style="display: none;">
+                <h4 class="text-center mb-3">
+                    Como você quer pagar o <span id="planoEscolhidoNome">Plano</span>?
+                </h4>
+
+                <table class="table-assinatura mx-auto">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Tipo</th>
+                            <th>Preço</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="linha_tipo_mensal" class="linha-tipo">
+                            <td><input type="radio" name="tipo_assinatura" id="tipo_mensal" value="mensal"></td>
+                            <td>Mensal</td>
+                            <td id="precoMensalTabela">R$ 29,00 <small>/usuário</small></td>
+                        </tr>
+                        <tr id="linha_tipo_anual" class="linha-tipo">
+                            <td><input type="radio" name="tipo_assinatura" id="tipo_anual" value="anual"></td>
+                            <td>Anual</td>
+                            <td id="precoAnualTabela">R$ 319,00 <small>/usuário</small></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <button id="btn_voltar_planos" class="mt-5 me-5">
