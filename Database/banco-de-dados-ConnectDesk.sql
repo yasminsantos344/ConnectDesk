@@ -6,7 +6,8 @@ CREATE TABLE tb_plano(
     id_plano            INT(2) AUTO_INCREMENT PRIMARY KEY,
     nome_plano          VARCHAR(40) NOT NULL,
     preco_mensal_plano  DECIMAL(4,2) NOT NULL,
-    descricao_plano     VARCHAR(150) NOT NULL
+    descricao_plano     VARCHAR(150) NOT NULL,
+    preco_anual_plano    DECIMAL(4,2) NOT NULL
 );
 
 
@@ -35,24 +36,40 @@ CREATE TABLE tb_empresa(
 
 CREATE TABLE tb_assinatura(
     id_assinatura               INT(6) AUTO_INCREMENT PRIMARY KEY,
-    fk_id_empresa                  INT(6) NOT NULL,
-    fk_id_plano                    INT(2) NOT NULL,
+    fk_id_empresa               INT(6) NOT NULL,
+    fk_id_plano                 INT(2) NOT NULL,
     status_assinatura           VARCHAR(20) NOT NULL,
     data_inicio_assinatura      DATETIME NOT NULL,
     data_vencimento_assinatura  DATETIME NOT NULL,
+    modo_pagamento_assinatura   VARCHAR(20) NOT NULL,
+    qtd_parcelas_assinatura     INT(2),
+    tipo_assinatura             VARCHAR(20) NOT NULL,
 
     CONSTRAINT fk_id_empresa FOREIGN KEY (id_empresa) REFERENCES tb_empresa(id_empresa),
     CONSTRAINT fk_id_plano FOREIGN KEY (id_plano) REFERENCES tb_plano(id_plano)
 );
 
+CREATE TABLE tb_dados_bancarios(
+    id_dados_bancarios                      INT(6) AUTO_INCREMENT PRIMARY KEY,
+    fk_id_empresa                           INT(6) NOT NULL,
+    nome_banco                              VARCHAR(50) NOT NULL,
+    bandeira_banco                           VARCHAR(10) NOT NULL,
+    nome_titular_banco                      VARCHAR(100) NOT NULL,
+    numero_cartao_banco                     VARCHAR(20) NOT NULL,
+    data_validade_cartao_banco              VARCHAR(10) NOT NULL,
+    codigo_seguranca_cartao_banco           VARCHAR(4) NOT NULL,
+
+    CONSTRAINT fk_id_empresa FOREIGN KEY (id_empresa) REFERENCES tb_empresa(id_empresa)
+);
 
 CREATE TABLE tb_pagamento(
-    id_pagamento                INT(10) AUTO_INCREMENT PRIMARY KEY,
-    fk_id_assinatura            INT(6) NOT NULL,
-    valor_pagamento             DECIMAL(6,2) NOT NULL,
-    status_pagamento            VARCHAR(20) NOT NULL,
-    data_hora_pagamento         DATETIME NOT NULL,
-    data_vencimento_pagamento   DATE NOT NULL,
+    id_pagamento                        INT(10) AUTO_INCREMENT PRIMARY KEY,
+    fk_id_assinatura                    INT(6) NOT NULL,
+    valor_pagamento                     DECIMAL(6,2) NOT NULL,
+    status_pagamento                    VARCHAR(20) NOT NULL,
+    data_hora_pagamento                 DATETIME NOT NULL,
+    data_vencimento_pagamento           DATE NOT NULL,
+    referencia_parcela_pagamento        VARCHAR(20),
 
     CONSTRAINT fk_id_assinatura FOREIGN KEY (id_assinatura) REFERENCES tb_assinatura(id_assinatura)
 );
