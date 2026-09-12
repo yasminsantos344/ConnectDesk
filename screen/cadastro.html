@@ -18,15 +18,15 @@
             <div class="row">
                 <div class="col" id="dados">
                     <hr>
-                    <p><b>01</b>Dados</p>
+                    <p><b>01</b> Dados</p>
                 </div>
                 <div class="col" id="planos">
                     <hr>
-                    <p><b>02</b>Escolha seu plano</p>
+                    <p><b>02</b> Escolha seu plano</p>
                 </div>
                 <div class="col" id="pagamento">
                     <hr>
-                    <p><b>03</b>Pagamento</p>                
+                    <p><b>03</b> Pagamento</p>                
                 </div>
             </div> <!-- progress line -->
         </section>
@@ -115,8 +115,8 @@
         </form>
 
         <form id="forms_planos" class="flex-column align-items-center gap-4 mt-4" >
-            <input type="radio" name="plano" id="plano_basico">
-            <div style="width: max-content;" class="d-flex flex-row border rounded p-4">
+            <label for="plano_basico" class="plano-opcao d-flex flex-row align-items-start gap-3 border rounded p-4">
+                <input type="radio" name="plano" id="plano_basico">
                 <div class="me-5"> <!-- características -->
                     <h2>Plano Básico</h2>
                     <ul>
@@ -134,10 +134,10 @@
                     <h2>A partir de <span>R$ 29,00</span> <sub>/usuário/mês</sub></h2>
                     <p class="text-muted mb-0">Selecione este plano para escolher entre mensal ou anual</p>
                 </div>
-            </div>
+            </label>
 
-            <input type="radio" name="plano" id="plano_pro">
-            <div style="width: max-content;" class="d-flex flex-row border rounded p-4">
+            <label for="plano_pro" class="plano-opcao d-flex flex-row align-items-start gap-3 border rounded p-4">
+                 <input type="radio" name="plano" id="plano_pro">
                 <div class="me-5"> <!-- características -->
                     <h2>Plano Pro</h2>
                     <ul>
@@ -148,6 +148,7 @@
                         <li>Triagem inteligente</li>
                     </ul>
                 </div>
+            
 
                 <div class="vr"></div>
 
@@ -155,11 +156,10 @@
                      <h2>A partir de <span>R$ 79,00</span> <sub>/usuário/mês</sub></h2>
                     <p class="text-muted mb-0">Selecione este plano para escolher entre mensal ou anual</p>
                 </div>
-            </div>
+            </label>
 
-
-            <input type="radio" name="plano" id="plano_enterprise">
-            <div style="width: max-content;" class="d-flex flex-row border rounded p-4">
+            <label for="plano_enterprise" class="plano-opcao d-flex flex-row align-items-start gap-3 border rounded p-4">
+                <input type="radio" name="plano" id="plano_enterprise">
                 <div class="me-4"> <!-- características -->
                     <h2>Plano Enterprise</h2>
                     <ul>
@@ -170,6 +170,7 @@
                         <li>Triagem inteligente</li>
                     </ul>
                 </div>
+            
 
                 <div class="vr"></div>
                 
@@ -177,7 +178,7 @@
                     <h2>A partir de <span>R$ 149,00</span> <sub>/usuário/mês</sub></h2>
                     <p class="text-muted mb-0">Selecione este plano para escolher entre mensal ou anual</p>
                 </div>
-            </div>
+            </label>
 
               <!-- Tabela de tipos de assinatura, exibida após escolher um plano -->
             <div id="tabela-assinatura-wrapper" class="w-100" style="display: none;">
@@ -251,8 +252,8 @@
 
                     <hr>
 
-                    <p class="mb-1"><strong>Produto:</strong> Plano Pro - ConnectDesk</p>
-                    <p class="mb-1"><strong>Valor:</strong> R$ 869,00</p>
+                    <p class="mb-1"><strong>Produto:</strong> <span id="resumoDropdownProduto">Plano Pro - ConnectDesk</span></p>
+                    <p class="mb-1"><strong>Valor:</strong> <span id="resumoDropdownValor">R$ 869,00</span></p>
                     <p class="mb-0"><strong>Código:</strong> 123456</p>
                 </div>
             </div>
@@ -314,27 +315,27 @@
             <div class="col-md-5">
                 <div class="price-summary p-4 rounded border shadow-sm">
 
-                <h6 class="fw-bold mb-0">PLANO PRO</h6>
-                <small class="text-muted">Anual</small>
+                <h6 class="fw-bold mb-0" id="resumoPlano"> PLANO PRO</h6>
+                <small class="text-muted" id="resumoTipo">Anual</small>
 
                 <hr>
 
                 <!-- LINHAS ALINHADAS -->
                 <div class="d-flex justify-content-between">
                     <span>Subtotal</span>
-                    <span class="fw-bold">R$ 948,00</span>
+                    <span class="fw-bold" id="resumoSubtotal" >R$ 948,00</span>
                 </div>
 
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between" id="resumoLinhaDesconto">
                     <span>Desconto</span>
-                    <span class="fw-bold text-success">- R$ 79,00</span>
+                    <span class="fw-bold text-success" id="resumoDesconto">- R$ 79,00</span>
                 </div>
 
                 <hr>
 
                 <div class="d-flex justify-content-between">
                     <strong>Total</strong>
-                    <strong>R$ 869,00</strong>
+                    <strong id="resumoTotal">R$ 869,00</strong>
                 </div>
 
                 </div>
@@ -351,7 +352,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        </form>     
     </article>
 
 

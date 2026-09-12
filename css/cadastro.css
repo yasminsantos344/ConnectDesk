@@ -74,6 +74,13 @@ button:hover{
     font-weight: bold;
 }
 
+.plano-opcao{
+    cursor: pointer;
+}
+.plano-opcao.selecionada{
+    border-color: var(--purple) !important;
+    background-color: #f3f0fc;
+}
 
 /* Pagamento */
 
@@ -170,3 +177,49 @@ button:hover{
     opacity: 1;
 }
 
+/* Tabela de tipos de assinatura (mensal / anual) */
+
+.table-assinatura {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 480px;
+}
+
+.table-assinatura th {
+    color: #9a9a9a;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    text-align: left;
+}
+
+.table-assinatura .linha-tipo {
+    background-color: var(--white);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.table-assinatura .linha-tipo td {
+    padding: 1rem;
+    border: 1px solid #e3e3e3;
+}
+
+.table-assinatura .linha-tipo:hover {
+    background-color: #f1eefc;
+}
+
+.table-assinatura .linha-tipo.selecionada {
+    background-color: #ede7fb;
+    border-color: var(--purple);
+}
+
+.table-assinatura .linha-tipo.selecionada td:first-child {
+    border-left: 3px solid var(--purple);
+}
+
+.table-assinatura input[type="radio"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
