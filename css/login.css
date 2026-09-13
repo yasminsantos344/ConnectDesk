@@ -147,8 +147,7 @@ body{
 /* ERRO */
 
 .erro{
-    background-color: #fff3e0 !important; 
-    border: 3px solid orange !important;
+    border: 3px solid #4EA8DE !important;
     /* O !important serve para dar prioridade máxima a uma regra CSS. */
 }
 

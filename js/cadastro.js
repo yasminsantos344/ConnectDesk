@@ -292,6 +292,7 @@ btn_finalizar_pagamento.addEventListener("click", (e) => {
     // some depois de 4s (opcional)
     setTimeout(() => {
         successCard.classList.remove("show");
+        window.location.href = "/screen/login.html";
     }, 4000);
 });
 

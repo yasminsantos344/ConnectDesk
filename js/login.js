@@ -30,12 +30,7 @@ function validarCampos(){
     // Se estiver tudo preenchido
     if(validado){
 
-        document.getElementById("janelaSucesso").style.display = "flex";
+        window.location.href = "/screen/usuario-perfil.html";
     }
 
-}
-
-function fecharJanela(){
-
-    document.getElementById("janelaSucesso").style.display = "none";
 }
