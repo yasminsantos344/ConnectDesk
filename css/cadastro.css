@@ -191,7 +191,7 @@ button:hover{
     font-weight: 600;
     text-transform: uppercase;
     padding: 0.5rem 1rem;
-    text-align: left;
+    text-align: center;
 }
 
 .table-assinatura .linha-tipo {
@@ -220,6 +220,6 @@ button:hover{
 
 .table-assinatura input[type="radio"] {
     cursor: pointer;
-    width: 18px;
-    height: 18px;
+    width: 28px;
+    height: 28px;
 }

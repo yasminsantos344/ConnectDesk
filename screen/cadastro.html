@@ -104,7 +104,7 @@
 
                 <div class="col-12 d-flex justify-content-between align-items-center mt-3">
                     <p class="mb-0">
-                    Já tem cadastro? <a href="../telas/login.html">Faça login</a>
+                    Já tem cadastro? <a href= "/screen/login.html">Faça login</a>
                     </p>
 
                     <button type="submit" id="btn_proximo_dados">
@@ -269,10 +269,47 @@
 
                 <!-- Cartão -->
                 <label class="border rounded p-3 d-flex align-items-center gap-3 payment-option">
-                    <input type="radio" name="forma_pag" class="form-check-input">
+                    <input type="radio" name="forma_pag" id="opcao_cartao" class="form-check-input">
                     <i class="bi bi-credit-card-2-back-fill fs-3"></i>
                     <div class="fw-semibold">Cartão de Crédito</div>
                 </label>
+
+                <!--Tabela de cadastro do cartão-->
+                <div id="tabela-cartao" class="border rounded p-3 d-none">
+                    <h6 class="fw-bold mb-3">Dados do cartão</h6>
+                    
+                    <div class="mb-2">
+                        <label for="cartao_numero" class="form-label small mb-1"> Número do cartão</label>
+                        <input type="text" id="cartao_numero" class="form-control" placeholder="0000 0000 0000 0000" maxlength="19">
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="cartao_nome" class="form-label small mb-1"> Nome impresso no cartão</label>
+                        <input type="text" id="cartao_nome" class="form-control" placeholder="Como está no cartão">
+                    </div>
+                    
+                    <div class="mb-2">
+                        <label for="cartao_validade" class="form-label small mb-1"> Data de validade</label>
+                        <input type="text" id="cartao_validade" class="form-control" placeholder="00/00" maxlength="5">
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label for="cartao_cvv" class="form-label small mb-1"> CVV</label>
+                            <input type="text" id="cartao_cvv" class="form-control" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+
+                    <button type="button" id="btn_salvar_cartao"> Salvar cartão</button>
+                    <p id="cartaoStatus" class="d-none mt-2 text-success"> Cartão Salvo ✓ </p>
+                    
+                    <div id="tabela-parcelamento-wrapper" class="mt-3 d-none">
+                        <label for="parcelamento" class="form-label small mb-1">Parcelamento</label>
+                        <select id="parcelamento" class="form-select"></select>
+                    </div>
+                </div>
+
+                
 
                 <!-- Boleto -->
                 <label class="border rounded p-3 payment-option">

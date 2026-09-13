@@ -84,6 +84,10 @@ function abrirTabelaAssinatura(planoId) {
     linhaTipoMensal.classList.remove("selecionada");
     linhaTipoAnual.classList.remove("selecionada");
 
+    if (opcaoCartao.checked) {
+        tabelaParcelamentoWrapper.classList.add("d-none");
+    }
+
     tabelaWrapper.style.display = "block";
     tabelaWrapper.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
@@ -106,6 +110,10 @@ linhaTipoAnual.addEventListener("click", () => {
 function atualizarSelecaoTipo() {
     linhaTipoMensal.classList.toggle("selecionada", tipoMensalRadio.checked);
     linhaTipoAnual.classList.toggle("selecionada", tipoAnualRadio.checked);
+
+    if (opcaoCartao.checked) {
+        gerarParcelamento();
+    }
 }
 
 // Retorna o id do plano selecionado (radio marcado), ou null se nenhum
@@ -138,14 +146,16 @@ function atualizarResumoPagamento() {
         const total = plano.anual;
 
         resumoTipo.textContent = "Anual";
-        resumoLinhaDesconto.style.display = "flex";
+        resumoLinhaDesconto.classList.remove("d-none");
+        resumoLinhaDesconto.classList.add("d-flex")
         resumoSubtotal.textContent = formatarMoeda(subtotal);
         resumoDesconto.textContent = "- " + formatarMoeda(desconto);
         resumoTotal.textContent = formatarMoeda(total);
         resumoDropdownValor.textContent = formatarMoeda(total);
     } else {
         resumoTipo.textContent = "Mensal";
-        resumoLinhaDesconto.style.display = "none";
+        resumoLinhaDesconto.classList.remove("d-flex");
+        resumoLinhaDesconto.classList.add("d-none")
         resumoSubtotal.textContent = formatarMoeda(plano.mensal);
         resumoTotal.textContent = formatarMoeda(plano.mensal);
         resumoDropdownValor.textContent = formatarMoeda(plano.mensal);
@@ -186,6 +196,92 @@ btn_proximo_planos.addEventListener("click", function(event) {
     form_pagamento.style.display = "block";
     pagamento.classList.add("pagamento_active");
 });
+
+//Mostrar/esconder tabela conforme forma de pagamento
+const radiosFormaPag = document.querySelectorAll('input[name="forma_pag"]');
+const opcaoCartao = document.getElementById("opcao_cartao");
+const tabelaCartao = document.getElementById("tabela-cartao");
+
+radiosFormaPag.forEach((radio) => {
+    radio.addEventListener("change", () => {
+        if(opcaoCartao.checked){
+            tabelaCartao.classList.remove("d-none");
+            gerarParcelamento(); // <-- NOVO: já mostra o parcelamento aqui
+        } else {
+            tabelaCartao.classList.add("d-none");
+        }
+    });
+});
+
+let dadosCartao = {};
+
+document.getElementById("btn_salvar_cartao").addEventListener("click", () => {
+    const numero = document.getElementById("cartao_numero");
+    const nome = document.getElementById("cartao_nome");
+    const validade = document.getElementById("cartao_validade");
+    const cvv = document.getElementById("cartao_cvv");
+
+    // Verifica se algum campo está vazio
+    if (
+        numero.value.trim() === "" ||
+        nome.value.trim() === "" ||
+        validade.value.trim() === "" ||
+        cvv.value.trim() === ""
+    ) {
+        alert("Preencha todos os dados do cartão antes de salvar.");
+        return; // interrompe a função aqui — não chega a salvar nem mostrar a confirmação
+    }
+
+    dadosCartao = {
+        numero: numero.value,
+        nome: nome.value,
+        validade: validade.value,
+        cvv: cvv.value
+    };
+
+    console.log("Cartão salvo:", dadosCartao);
+
+    const cartaoStatus = document.getElementById("cartaoStatus");
+    cartaoStatus.classList.remove("d-none");
+    cartaoStatus.classList.add("d-block");
+
+    
+});
+
+//tabela de parcelamento
+const tabelaParcelamentoWrapper = document.getElementById("tabela-parcelamento-wrapper");
+const corpoParcelamento = document.getElementById("corpoParcelamento");
+
+function gerarParcelamento() {
+    const planoId = getPlanoSelecionado();
+    const tipo = getTipoSelecionado();
+    if (!planoId || !tipo) return;
+
+    const plano = planosDados[planoId];
+    const anual = tipo === "anual";
+
+    const total = anual ? plano.anual : plano.mensal;
+    const maxParcelas = anual ? 10 : 1;
+
+    const selectParcelamento = document.getElementById("parcelamento");
+    selectParcelamento.innerHTML = ""; // limpa opções de uma geração anterior
+
+    for (let n = 1; n <= maxParcelas; n++) {
+        const valorParcela = total / n;
+
+        const opcao = document.createElement("option");
+        opcao.value = n;
+        opcao.textContent = `${n}x de ${formatarMoeda(valorParcela)}${n > 1 ? " sem juros" : ""}`;
+        selectParcelamento.appendChild(opcao);
+    }
+
+       tabelaParcelamentoWrapper.classList.remove("d-none");
+}
+
+function getParcelaSelecionada() {
+    const select = document.getElementById("parcelamento");
+    return select.value ? Number(select.value) : null;
+}
 
 // Lógica para mostrar o card de sucesso
 btn_finalizar_pagamento.addEventListener("click", (e) => {
