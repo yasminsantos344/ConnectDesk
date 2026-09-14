@@ -287,6 +287,18 @@ function getParcelaSelecionada() {
 btn_finalizar_pagamento.addEventListener("click", (e) => {
     e.preventDefault();
 
+    const formaPagSelecionada = document.querySelector('input[name="forma_pag"]:checked');
+
+    if(!formaPagSelecionada){
+        alert("Selecione uma forma de pagamento para continuar.");
+        return;
+    }
+
+    if(opcaoCartao.checked && Object.keys(dadosCartao).length === 0){
+        alert("Preencha e salve os dados do cartão antes de finalizar.");
+        return;
+    }
+
     successCard.classList.add("show");
 
     // some depois de 4s (opcional)
