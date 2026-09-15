@@ -27,11 +27,11 @@ function cadastro() {
     }
 
     // Formulário de pagamento
-    var formaPagamento = $('#forms_pagamento input[name="forma_pag"]:checked').val();
+    var formaPagamento = $('#forms_pagamento input[name="modo_pagamento_assinatura"]:checked').val();
     console.log("formaPagamento: " + formaPagamento);
 
     if (formaPagamento) {
-        dados.append('forma_pag', formaPagamento);
+        dados.append('modo_pagamento_assinatura', formaPagamento);
     }
 
     $.ajax({

@@ -1,11 +1,12 @@
 <?php
 
+include_once("../config/database.php");
 include_once("../models/cadastro.php");
 
-$adm            = new AdministradorEmpresa;
-$empresa        = new Empresa;
-$assinatura     = new Assinatura;
-$dadosBancarios = new DadosBancarios;
+$adm            = new AdministradorEmpresa($pdo);
+$empresa        = new Empresa($pdo);
+$assinatura     = new Assinatura($pdo);
+$dadosBancarios = new DadosBancarios($pdo);
 
 $email_adm = filter_input(INPUT_GET,"email_adm", FILTER_SANITIZE_EMAIL);
 $senha_adm = filter_input(INPUT_GET,"senha_adm");
@@ -13,8 +14,8 @@ $senha_adm = filter_input(INPUT_GET,"senha_adm");
 $razao_social           = filter_input(INPUT_GET,"razao_social");
 $cnpj                   = filter_input(INPUT_GET,"cnpj",);
 $nome_fantasia          = filter_input(INPUT_GET, "nome_fantasia");
-$inscricao_estadual     = filter_input(INPUT_GET, "inscricao_estadual");
-$inscricao_municipal    = filter_input(INPUT_GET,"inscricao_municipal");
+$inscricao_estadual     = $_FILES['inscricao_estadual']['name'] ?? null; 
+$inscricao_municipal    = $_FILES['inscricao_municipal']['name'] ?? null;
 
 $id_plano                   = filter_input(INPUT_GET,"id_plano");
 $modo_pagamento_assinatura  = filter_input(INPUT_GET,"modo_pagamento_assinatura");
@@ -30,7 +31,7 @@ $data_validade_cartao_banco     = filter_input(INPUT_GET,"data_validade_cartao_b
 $codigo_seguranca_cartao_banco  = filter_input(INPUT_GET,"codigo_seguranca_cartao_banco");
 
 
-$adm ->setEmailAdm($emailAdm);
+$adm ->setEmailAdm($email_adm);
 $adm ->setSenhaAdm($senha_adm);
 
 $empresa ->razao_social = $razao_social;
@@ -46,9 +47,9 @@ $assinatura ->qtd_parcelas_assinatura = $qtd_parcelas_assinatura;
 $assinatura ->data_vencimento_assinatura = $data_vencimento_assinatura;
 
 $dadosBancarios ->setBanco($banco);
-$dadosBancarios ->setBandeiraBanco(identificarBandeira($numeroCartao_banco));
+$dadosBancarios ->setBandeiraBanco(identificarBandeira($numero_cartao_banco));
 $dadosBancarios ->setNomeTitularBanco($nome_titular_banco);
-$dadosBancarios ->setNumeroCartaoBanco($numeroCartao_banco);
+$dadosBancarios ->setNumeroCartaoBanco($numero_cartao_banco);
 $dadosBancarios ->setDataValidadeCartao($data_validade_cartao_banco);
 $dadosBancarios ->setCodigoSegurancaCartao($codigo_seguranca_cartao_banco);
 
@@ -58,12 +59,16 @@ if(isset($_GET['Cadastrar'])){
         $id_adm = $adm -> cadastrarAdm();
         $empresa_id = $empresa -> cadastrarEmpresa($id_adm);
         $assinatura -> registrarAssinatura($empresa_id);
+
+        if($modo_pagamento_assinatura === 'cartao') {
+            $dadosBancarios -> cadastrarDadosBancarios($empresa_id);
+        }
         $dadosBancarios -> cadastrarDadosBancarios($empresa_id);
 
         echo "Cadastro realizado com sucesso!";
     }
     catch(Exception $e){
-        echo "Erro: " + $e->getMessage();
+        echo "Erro: " . $e->getMessage();
     }
 }
 
@@ -71,9 +76,10 @@ if(isset($_GET['Cadastrar'])){
 // MÉTODO AUXILIAR 
 
 
-function identificarBandeira(string $numeroCartao): string {
+function identificarBandeira($numero_cartao_banco){
+    $numeroStr = strval($numero_cartao_banco);
         // Remove quaisquer espaços ou caracteres não numéricos
-        $numero = preg_replace('/\D/', '', $numeroCartao);
+        $numero = preg_replace('/\D/', '', $numeroStr);
 
         // Expressões regulares para cada bandeira
         $padroes = [

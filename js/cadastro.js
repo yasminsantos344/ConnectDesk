@@ -7,7 +7,7 @@ const btn_proximo_dados = document.getElementById("btn_proximo_dados");
 const btn_proximo_planos = document.getElementById("btn_proximo_planos");
 const btn_voltar_planos = document.getElementById("btn_voltar_planos");
 
-const btn_finalizar_pagamento = document.getElementById("btn_finalizar_pagamento");
+//const btn_finalizar_pagamento = document.getElementById("btn_finalizar_pagamento");
 const btn_voltar_pagamento = document.getElementById("btn_voltar_pagamento");
 
 const successCard = document.getElementById("success-card");
@@ -23,7 +23,7 @@ const planosDados = {
     plano_enterprise: { nome: "PLANO ENTERPRISE", mensal: 149.00, anual: 1490.00, mesesGratis: 2 }
 };
 
-const radiosPlano = document.querySelectorAll('input[name="plano"]');
+const radiosPlano = document.querySelectorAll('input[name="id_plano"]');
 
 // Tabela de tipos de assinatura (aparece após escolher um plano)
 const tabelaWrapper = document.getElementById("tabela-assinatura-wrapper");
@@ -118,7 +118,7 @@ function atualizarSelecaoTipo() {
 
 // Retorna o id do plano selecionado (radio marcado), ou null se nenhum
 function getPlanoSelecionado() {
-    const selecionado = document.querySelector('input[name="plano"]:checked');
+    const selecionado = document.querySelector('input[name="id_plano"]:checked');
     return selecionado ? selecionado.id : null;
 }
 
@@ -198,7 +198,7 @@ btn_proximo_planos.addEventListener("click", function(event) {
 });
 
 //Mostrar/esconder tabela conforme forma de pagamento
-const radiosFormaPag = document.querySelectorAll('input[name="forma_pag"]');
+const radiosFormaPag = document.querySelectorAll('input[name="modo_pagamento_assinatura"]');
 const opcaoCartao = document.getElementById("opcao_cartao");
 const tabelaCartao = document.getElementById("tabela-cartao");
 
@@ -287,7 +287,7 @@ function getParcelaSelecionada() {
 btn_finalizar_pagamento.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const formaPagSelecionada = document.querySelector('input[name="forma_pag"]:checked');
+    const formaPagSelecionada = document.querySelector('input[name="modo_pagamento_assinatura"]:checked');
 
     if(!formaPagSelecionada){
         alert("Selecione uma forma de pagamento para continuar.");
@@ -304,7 +304,7 @@ btn_finalizar_pagamento.addEventListener("click", (e) => {
     // some depois de 4s (opcional)
     setTimeout(() => {
         successCard.classList.remove("show");
-        window.location.href = "/screen/login.html";
+        //window.location.href = "/screen/login.html";
     }, 4000);
 });
 
