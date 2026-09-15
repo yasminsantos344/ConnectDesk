@@ -63,7 +63,7 @@ class Empresa{
 
 // Métodos
 
-    public function cadastrarAdm($id_adm){
+    public function cadastrarEmpresa($id_adm){
         include_once '../config/database.php';
 
         $sql_empresa = "INSERT INTO tb_empresa (razao_social_empresa, cnpj_empresa, nome_fantasia_empresa, inscricao_estadual_empresa,
