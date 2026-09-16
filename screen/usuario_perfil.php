@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['email_adm'])) {
+    header("Location: http://localhost/ConnectDesk/screen/login.html");
+    exit();
+}
+
+$id = $_SESSION['id_adm'];
+$email = $_SESSION['email_adm'];
+$nome_fantasia = $_SESSION['nome_fantasia_empresa'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -27,7 +42,7 @@
         <a href="#" class="nav-item" data-page="tickets">
           <span class="nav-icon"><i class="fa-solid fa-ticket"></i></span> Tickets
         </a>
-        <a href="#" class="nav-item active" data-page="usuario-perfil">
+        <a href="#" class="nav-item active" data-page="usuario_perfil">
           <span class="nav-icon"><i class="fa-solid fa-face-smile"></i></span> Perfil
         </a>
         <a href="#" class="nav-item" data-page="chatbot">
@@ -68,7 +83,9 @@
         <button class="icon-btn" aria-label="Notificações"><i class="fa-solid fa-bell"></i></button>
         <div class="user-chip">
           <i class="fa-solid fa-circle-user" style="color: rgb(138, 143, 156);"></i>
-          <span id="nomeTopo">Fulano de tal</span>
+            <span id="nomeTopo">
+                <?php echo $nome_fantasia; ?>
+            </span>
         </div>
       </header>
 
@@ -77,48 +94,34 @@
 
         <!-- dados do usuário -->
         <section class="card-de-perfil">
-          <h1 class="nome-do-perfil" id="nomePerfil">Fulana de tal</h1>
-          <p class="cargo">Administrador</p>
-          <i class="fa-solid fa-circle-user icone-perfil"></i>
+            <h1 class="nome-do-perfil" id="nomePerfil">
+                <?php echo $nome_fantasia; ?>
+            </h1>
+            <p class="cargo">Administrador</p>
+            <i class="fa-solid fa-circle-user icone-perfil"></i>
         </section>
 
         <!-- informações pessoais -->
         <section class="card info-card">
           <div class="info-card-header">
-            <h2>Personal Information</h2>
+            <h2>Corporative Information</h2>
             <button class="icon-btn edit-btn" id="editBtn" aria-label="Editar informações"><i class="fa-solid fa-pen-to-square"></i></button>
           </div>
 
           <form id="infoForm" class="info-grid">
             <div class="field">
-              <label for="genero">Genero</label>
-              <input type="text" id="genero" name="genero" value="Feminino" disabled>
-            </div>
-            <div class="field">
-              <label for="nomeUsuario">Nome de usuário</label>
-              <input type="text" id="nomeUsuario" name="nomeUsuario" value="Fulana de tal" disabled>
-            </div>
-            <div class="field">
-              <label for="data-de-nascimento">Data de nascimento</label>
-              <input type="text" id="data-de-nascimento" name="data-de-nascimento" value="01/01/2000" disabled>
+              <label for="empresa">Empresa</label>
+             <input type="text" id="empresa" name="empresa" value="<?php echo $nome_fantasia; ?>" disabled>
             </div>
 
             <div class="field">
               <label for="userId">ID</label>
-              <input type="text" id="userId" name="userId" value="SJ53862" disabled>
+              <input type="text" id="userId" name="userId" value="<?php echo $id; ?>" disabled>
             </div>
+            
             <div class="field">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" value="email@test.com" disabled>
-            </div>
-
-            <div class="field">
-              <label for="telefone">Número</label>
-              <input type="text" id="telefone" name="telefone" value="(11) 99999-9999" disabled>
-            </div>
-            <div class="field">
-              <label for="cidade">Cidade</label>
-              <input type="text" id="cidade" name="cidade" value="São Paulo" disabled>
+              <input type="email" id="email" name="email" value="<?php echo $email; ?>" disabled>
             </div>
 
             <div class="form-actions" id="formActions" hidden>
@@ -132,7 +135,7 @@
     </div>
   </div>
 
-  <script src="/js/usuario-perfil.js"></script>
+  <script src="/js/usuario_perfil.js"></script>
 </body>
 </html>
 </body>

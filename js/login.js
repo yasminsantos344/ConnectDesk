@@ -30,7 +30,7 @@ function validarCampos(){
     // Se estiver tudo preenchido
     if(validado){
 
-        window.location.href = "/screen/usuario-perfil.html";
+        //window.location.href = "/screen/usuario_perfil.html";
     }
 
 }

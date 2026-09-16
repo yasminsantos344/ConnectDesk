@@ -298,14 +298,6 @@ btn_finalizar_pagamento.addEventListener("click", (e) => {
         alert("Preencha e salve os dados do cartão antes de finalizar.");
         return;
     }
-
-    successCard.classList.add("show");
-
-    // some depois de 4s (opcional)
-    setTimeout(() => {
-        successCard.classList.remove("show");
-        //window.location.href = "/screen/login.html";
-    }, 4000);
 });
 
 btn_voltar_pagamento.addEventListener("click", function(event) {
