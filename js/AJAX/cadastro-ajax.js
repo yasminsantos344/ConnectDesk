@@ -7,6 +7,14 @@ function cadastro() {
     var formDados = document.getElementById('forms_dados');
     var dadosEmpresa = new FormData(formDados);
 
+    var dadosEmpresa = new FormData(formDados);
+
+    console.log("FORMULÁRIO:", formDados);
+
+    for (let [chave, valor] of dadosEmpresa.entries()) {
+        console.log(chave, "=", valor);
+    }
+
     dadosEmpresa.forEach(function(valor, chave) {
         dados.append(chave, valor);
     });
@@ -19,15 +27,16 @@ function cadastro() {
     }
 
     // Formulário de pagamento
-    var formaPagamento = $('#forms_pagamento input[name="forma_pag"]:checked').val();
+    var formaPagamento = $('#forms_pagamento input[name="modo_pagamento_assinatura"]:checked').val();
+    console.log("formaPagamento: " + formaPagamento);
 
     if (formaPagamento) {
-        dados.append('forma_pag', formaPagamento);
+        dados.append('modo_pagamento_assinatura', formaPagamento);
     }
 
     $.ajax({
         method: 'POST',
-        url: 'ContrEmpresa.php',
+        url: '../controller/ContrCadastro.php?Cadastrar',
         data: dados,
 
         processData: false,

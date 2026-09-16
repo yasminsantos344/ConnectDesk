@@ -10,6 +10,10 @@ CREATE TABLE tb_plano(
     preco_anual_plano    DECIMAL(4,2) NOT NULL
 );
 
+ALTER TABLE tb_plano
+MODIFY preco_mensal_plano DECIMAL(6,2) NOT NULL,
+MODIFY preco_anual_plano DECIMAL(6,2) NOT NULL;
+
 
 CREATE TABLE tb_adm_empresa(
     id_administrador_empresa INT(6) AUTO_INCREMENT PRIMARY KEY,

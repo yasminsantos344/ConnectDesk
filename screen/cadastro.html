@@ -116,7 +116,7 @@
 
         <form id="forms_planos" class="flex-column align-items-center gap-4 mt-4" >
             <label for="plano_basico" class="plano-opcao d-flex flex-row align-items-start gap-3 border rounded p-4">
-                <input type="radio" name="plano" id="plano_basico">
+                <input type="radio" name="id_plano" id="plano_basico" value=1>
                 <div class="me-5"> <!-- características -->
                     <h2>Plano Básico</h2>
                     <ul>
@@ -137,7 +137,7 @@
             </label>
 
             <label for="plano_pro" class="plano-opcao d-flex flex-row align-items-start gap-3 border rounded p-4">
-                 <input type="radio" name="plano" id="plano_pro">
+                 <input type="radio" name="id_plano" id="plano_pro" value=2>
                 <div class="me-5"> <!-- características -->
                     <h2>Plano Pro</h2>
                     <ul>
@@ -159,7 +159,7 @@
             </label>
 
             <label for="plano_enterprise" class="plano-opcao d-flex flex-row align-items-start gap-3 border rounded p-4">
-                <input type="radio" name="plano" id="plano_enterprise">
+                <input type="radio" name="id_plano" id="plano_enterprise" value=3>
                 <div class="me-4"> <!-- características -->
                     <h2>Plano Enterprise</h2>
                     <ul>
@@ -269,7 +269,7 @@
 
                 <!-- Cartão -->
                 <label class="border rounded p-3 d-flex align-items-center gap-3 payment-option">
-                    <input type="radio" name="forma_pag" id="opcao_cartao" class="form-check-input">
+                    <input type="radio" name="modo_pagamento_assinatura" id="opcao_cartao" value="cartao" class="form-check-input">
                     <i class="bi bi-credit-card-2-back-fill fs-3"></i>
                     <div class="fw-semibold">Cartão de Crédito</div>
                 </label>
@@ -280,7 +280,7 @@
                     
                     <div class="mb-2">
                         <label for="cartao_numero" class="form-label small mb-1"> Número do cartão</label>
-                        <input type="text" id="cartao_numero" class="form-control" placeholder="0000 0000 0000 0000" maxlength="19">
+                        <input type="text" id="cartao_numero" name="numero_cartao_banco" class="form-control" placeholder="0000 0000 0000 0000" maxlength="19">
                     </div>
 
                     <div class="mb-2">
@@ -290,7 +290,7 @@
                     
                     <div class="mb-2">
                         <label for="cartao_validade" class="form-label small mb-1"> Data de validade</label>
-                        <input type="text" id="cartao_validade" class="form-control" placeholder="00/00" maxlength="5">
+                        <input type="text" id="cartao_validade" name="data_vencimento_assinatura" class="form-control" placeholder="00/00" maxlength="5">
                     </div>
 
                     <div class="row g-2 mb-3">
@@ -305,7 +305,7 @@
                     
                     <div id="tabela-parcelamento-wrapper" class="mt-3 d-none">
                         <label for="parcelamento" class="form-label small mb-1">Parcelamento</label>
-                        <select id="parcelamento" class="form-select"></select>
+                        <select id="parcelamento" name="qtd_parcelas_assinatura" class="form-select"></select>
                     </div>
                 </div>
 
@@ -314,7 +314,7 @@
                 <!-- Boleto -->
                 <label class="border rounded p-3 payment-option">
                     <div class="d-flex align-items-center gap-3">
-                    <input type="radio" name="forma_pag" class="form-check-input">
+                    <input type="radio" name="modo_pagamento_assinatura" value="boleto" class="form-check-input">
                     <i class="bi bi-upc-scan fs-3"></i>
                     <div class="fw-semibold">Boleto Bancário</div>
                     </div>
@@ -326,7 +326,7 @@
                 <!-- Pix -->
                 <label class="border rounded p-3 payment-option">
                     <div class="d-flex align-items-center gap-3">
-                    <input type="radio" name="forma_pag" class="form-check-input">
+                    <input type="radio" name="modo_pagamento_assinatura" value="pix" class="form-check-input">
 
                     <svg width="28" height="28" fill="currentColor" viewBox="0 0 30 30">
                         <path d="M 15 1.0996094 C 13.975 1.0996094 12.949922 1.4895313 12.169922 2.2695312 L 7.1894531 7.25 L 7.3398438 7.25 C 8.6098437 7.25 9.7992188 7.740625 10.699219 8.640625 L 14.189453 12.130859 C 14.639453 12.570859 15.360547 12.570859 15.810547 12.130859 L 19.300781 8.640625 C 20.200781 7.740625 21.390156 7.25 22.660156 7.25 L 22.810547 7.25 L 17.830078 2.2695312 C 17.050078 1.4895313 16.025 1.0996094 15 1.0996094 z M 5.6894531 8.75 L 2.2695312 12.169922 C 0.70953125 13.729922 0.70953125 16.270078 2.2695312 17.830078 L 5.6894531 21.25 L 7.3398438 21.25 C 8.2098438 21.25 9.030625 20.910781 9.640625 20.300781 L 13.130859 16.810547 C 14.160859 15.780547 15.839141 15.780547 16.869141 16.810547 L 20.359375 20.300781 C 20.969375 20.910781 21.790156 21.25 22.660156 21.25 L 24.310547 21.25 L 27.730469 17.830078 C 29.290469 16.270078 29.290469 13.729922 27.730469 12.169922 L 24.310547 8.75 L 22.660156 8.75 C 21.790156 8.75 20.969375 9.0892188 20.359375 9.6992188 L 16.869141 13.189453 C 16.359141 13.699453 15.68 13.960938 15 13.960938 C 14.32 13.960938 13.640859 13.699453 13.130859 13.189453 L 9.640625 9.6992188 C 9.030625 9.0892187 8.2098437 8.75 7.3398438 8.75 L 5.6894531 8.75 z M 15 17.539062 C 14.7075 17.539062 14.414453 17.649141 14.189453 17.869141 L 10.699219 21.359375 C 9.7992188 22.259375 8.6098437 22.75 7.3398438 22.75 L 7.1894531 22.75 L 12.169922 27.730469 C 13.729922 29.290469 16.270078 29.290469 17.830078 27.730469 L 22.810547 22.75 L 22.660156 22.75 C 21.390156 22.75 20.200781 22.259375 19.300781 21.359375 L 15.810547 17.869141 C 15.585547 17.649141 15.2925 17.539062 15 17.539062 z"></path>
@@ -393,8 +393,13 @@
     </article>
 
 
-</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
 <script src="../js/AJAX/cadastro-ajax.js"></script>
 <script src="../js/cadastro.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
 </html>
