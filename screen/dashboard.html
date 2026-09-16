@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+    <script src="https://kit.fontawesome.com/4b7f2b17a4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="app">
+
+   <!--Usuario(Suporte) com todas as permições-->
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="/assets/logo.png" class="img_logo">
+      </div>
+
+      <nav class="nav">
+        <a href="/screen/dashboard.html" class="nav-item active" data-page="dashboard">
+          <span class="nav-icon"><i class="fa-solid fa-chart-simple"></i></span> Dashboard
+        </a>
+        <a href="#" class="nav-item" data-page="tickets">
+          <span class="nav-icon"><i class="fa-solid fa-ticket"></i></span> Tickets
+        </a>
+        <a href="/screen/usuario-perfil.html" class="nav-item " data-page="usuario-perfil">
+          <span class="nav-icon"><i class="fa-solid fa-face-smile"></i></span> Perfil
+        </a>
+        <a href="#" class="nav-item" data-page="chatbot">
+          <span class="nav-icon"><i class="fa-solid fa-robot"></i></span> ChatBot
+        </a>
+        <a href="#" class="nav-item" data-page="faq">
+          <span class="nav-icon"><i class="fa-regular fa-comments"></i></span> FAQ
+        </a>
+        <a href="#" class="nav-item" data-page="chat">
+          <span class="nav-icon"><i class="fa-solid fa-message"></i></span> Chat
+        </a>
+        <a href="#" class="nav-item" data-page="relatorio">
+          <span class="nav-icon"><i class="fa-solid fa-file"></i></span> Relatório
+        </a>
+        <a href="#" class="nav-item" data-page="usuarios">
+          <span class="nav-icon"><i class="fa-solid fa-user"></i></span> Usuários
+        </a>
+      </nav>
+
+      <nav class="nav nav-bottom">
+        <a href="#" class="nav-item" data-page="config">
+          <span class="nav-icon"><i class="fa-solid fa-gear"></i></span> Configurações
+        </a>
+        <a href="#" class="nav-item" data-page="config-avancadas">
+          <span class="nav-icon"><i class="fa-solid fa-gears"></i></span> Configurações avançadas
+        </a>
+        <a href="#" class="nav-item" data-page="ajuda">
+          <span class="nav-icon"><i class="fa-solid fa-circle-question"></i></span> Ajuda
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+
+      <!-- Topbar -->
+      <header class="topbar">
+        <button class="icon-btn" aria-label="Notificações"><i class="fa-solid fa-bell"></i></button>
+        <div class="user-chip">
+          <i class="fa-solid fa-circle-user" style="color: rgb(138, 143, 156);"></i>
+          <span id="nomeTopo">Fulano de tal</span>
+        </div>
+      </header>
+      
+      <h1 class="titulo_dashboard">Dashboard</h1>
+      
+      <main class="content">
+            
+        <div class="cards-resumo">
+            <div class="card-resumo">
+                <p class="card-resumo-label"> Total de chamados <small>(mês)</small></p>
+                <p class="card-resumo-valor">1248</p>
+            </div>
+
+            <div class="card-resumo">
+                <p class="card-resumo-label">Chamados abertos</p>
+                <p class="card-resumo-valor">87</p>
+            </div>
+
+            <div class="card-resumo">
+                <p class="card-resumo-label"> Chamados em andamento</p>
+                <p class="card-resumo-valor">156</p>
+            </div>
+
+            <div class="card-resumo">
+                <p class="card-resumo-label"> Chamados resolvidos</p>
+                <p class="card-resumo-valor">1005</p>
+            </div>
+        </div>
+      </main>
+
+      <!--Tabela de chamados-->
+
+      <section class="backlog">
+        <h2 class="secao-titulo">Backlog</h2>
+
+        <table class="tabela-backlog">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Motivo</th>
+                    <th>Abertura</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Motivo A</td>
+                    <td>01/02/2026</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Motivo B</td>
+                    <td>02/02/2026</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Motivo C</td>
+                    <td>03/02/2026</td>
+                </tr>
+            </tbody>
+        </table>
+      </section>
+     
+    </div>
+    <Script src="/js/dashboard.js"></Script>
+</body>
+</html>
