@@ -138,5 +138,3 @@ $nome_fantasia = $_SESSION['nome_fantasia_empresa'];
   <script src="/js/usuario_perfil.js"></script>
 </body>
 </html>
-</body>
-</html>

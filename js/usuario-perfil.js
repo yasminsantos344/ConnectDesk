@@ -68,7 +68,7 @@ infoForm.addEventListener("submit", (event) => {
   console.log("Dados salvos:", Object.fromEntries(new FormData(infoForm)));
 });
 
-// Navegação simples entre "páginas" da sidebar (troque pelos seus links reais)
+// Navegação simples entre "páginas" da sidebar
 document.querySelectorAll(".nav-item").forEach((item) => {
   item.addEventListener("click", (event) => {
     window.location.href = `${item.dataset.page}.html`;
