@@ -5,38 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ConnectDesk - Login</title>
 
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
 
     <div class="container">
 
         <!-- Painel Login -->
-        <div class="login-panel">
+        <form id="form_login" class="login-panel">
             <h1>Acesso</h1>
 
             <div class="caixa-login">
-                <input type="email" id="email" placeholder="Email">
+                <input type="email" name="email" id="email" placeholder="Email">
             </div>
 
             <div class="caixa-login">
-                <input type="password" id="senha" placeholder="Senha">
+                <input type="password" name="senha" id="senha" placeholder="Senha">
             </div>
 
             <a href="#" class="esqueci-senha">Esqueci a senha</a>
 
-            <button class="btn acessar" onclick="validarCampos()" href="/screen/usuario-perfil.html">
+            <button type="button" class="btn acessar" onclick="validarCampos(); login();">
                 Acessar
             </button>
 
             <p class="frase-cadastro">
-            Não possui conta? <a href="/screen/cadastro.html" class="me-cadastrar">Me cadastrar</a>
+            Não possui conta? <a href="http://localhost/ConnectDesk/screen/cadastro.html" class="me-cadastrar">Me cadastrar</a>
             </p>
             
-        </div>
+        </form>
 
     </div>
-
-    <script src="/js/login.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/AJAX/login-ajax.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 </html>

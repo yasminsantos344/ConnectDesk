@@ -8,27 +8,27 @@ $empresa        = new Empresa($pdo);
 $assinatura     = new Assinatura($pdo);
 $dadosBancarios = new DadosBancarios($pdo);
 
-$email_adm = filter_input(INPUT_GET,"email_adm", FILTER_SANITIZE_EMAIL);
-$senha_adm = filter_input(INPUT_GET,"senha_adm");
+$email_adm = filter_input(INPUT_POST,"email_adm", FILTER_SANITIZE_EMAIL);
+$senha_adm = filter_input(INPUT_POST,"senha_adm");
 
-$razao_social           = filter_input(INPUT_GET,"razao_social");
-$cnpj                   = filter_input(INPUT_GET,"cnpj",);
-$nome_fantasia          = filter_input(INPUT_GET, "nome_fantasia");
-$inscricao_estadual     = $_FILES['inscricao_estadual']['name'] ?? null; 
-$inscricao_municipal    = $_FILES['inscricao_municipal']['name'] ?? null;
+$razao_social                   = filter_input(INPUT_POST,"razao_social");
+$cnpj                           = filter_input(INPUT_POST,"cnpj", FILTER_SANITIZE_STRING);
+$nome_fantasia                  = filter_input(INPUT_POST, "nome_fantasia", FILTER_SANITIZE_STRING);
+$inscricao_estadual             = $_FILES['inscricao_estadual']['name'] ?? null;
+$inscricao_municipal            = $_FILES['inscricao_municipal']['name'] ?? null;
 
-$id_plano                   = filter_input(INPUT_GET,"id_plano");
-$modo_pagamento_assinatura  = filter_input(INPUT_GET,"modo_pagamento_assinatura");
-$tipo_assinatura            = filter_input(INPUT_GET,"tipo_assinatura");
-$qtd_parcelas_assinatura    = filter_input(INPUT_GET,"qtd_parcelas_assinatura");
-$data_vencimento_assinatura = filter_input(INPUT_GET,"data_vencimento_assinatura");
+$id_plano                   = filter_input(INPUT_POST,"id_plano");
+$modo_pagamento_assinatura  = filter_input(INPUT_POST,"modo_pagamento_assinatura");
+$tipo_assinatura            = filter_input(INPUT_POST,"tipo_assinatura");
+$qtd_parcelas_assinatura    = filter_input(INPUT_POST,"qtd_parcelas_assinatura");
+$data_vencimento_assinatura = filter_input(INPUT_POST,"data_vencimento_assinatura");
 
-$banco                          = filter_input(INPUT_GET,"banco");
-$bandeira_banco                 = filter_input(INPUT_GET,"bandeira_banco");
-$nome_titular_banco             = filter_input(INPUT_GET,"nome_titular_banco");
-$numero_cartao_banco            = filter_input(INPUT_GET,"numero_cartao_banco");
-$data_validade_cartao_banco     = filter_input(INPUT_GET,"data_validade_cartao_banco");
-$codigo_seguranca_cartao_banco  = filter_input(INPUT_GET,"codigo_seguranca_cartao_banco");
+$banco                          = filter_input(INPUT_POST,"banco");
+$bandeira_banco                 = filter_input(INPUT_POST,"bandeira_banco");
+$nome_titular_banco             = filter_input(INPUT_POST,"nome_titular_banco");
+$numero_cartao_banco            = filter_input(INPUT_POST,"numero_cartao_banco");
+$data_validade_cartao_banco     = filter_input(INPUT_POST,"data_validade_cartao_banco");
+$codigo_seguranca_cartao_banco  = filter_input(INPUT_POST,"codigo_seguranca_cartao_banco");
 
 
 $adm ->setEmailAdm($email_adm);
@@ -44,9 +44,9 @@ $assinatura ->id_plano = $id_plano;
 $assinatura ->modo_pagamento_assinatura = $modo_pagamento_assinatura;
 $assinatura ->tipo_assinatura = $tipo_assinatura;
 $assinatura ->qtd_parcelas_assinatura = $qtd_parcelas_assinatura;
-$assinatura ->data_vencimento_assinatura = $data_vencimento_assinatura;
+$assinatura ->data_vencimento_assinatura = calc_data_vencimento($tipo_assinatura);
 
-$dadosBancarios ->setBanco($banco);
+/*$dadosBancarios ->setBanco($banco);*/
 $dadosBancarios ->setBandeiraBanco(identificarBandeira($numero_cartao_banco));
 $dadosBancarios ->setNomeTitularBanco($nome_titular_banco);
 $dadosBancarios ->setNumeroCartaoBanco($numero_cartao_banco);
@@ -58,12 +58,16 @@ if(isset($_GET['Cadastrar'])){
     try{
         $id_adm = $adm -> cadastrarAdm();
         $empresa_id = $empresa -> cadastrarEmpresa($id_adm);
-        $assinatura -> registrarAssinatura($empresa_id);
+        $assinatura_id = $assinatura -> registrarAssinatura($empresa_id);
 
         if($modo_pagamento_assinatura === 'cartao') {
             $dadosBancarios -> cadastrarDadosBancarios($empresa_id);
         }
         $dadosBancarios -> cadastrarDadosBancarios($empresa_id);
+
+        echo "id_adm: " . $id_adm . "<br>";
+        echo "id_empresa: " . $empresa_id . "<br>";
+        echo "id_assinatura: " . $assinatura_id . "<br>";
 
         echo "Cadastro realizado com sucesso!";
     }
@@ -101,4 +105,17 @@ function identificarBandeira($numero_cartao_banco){
         }
 
         return 'Desconhecida';
+}
+
+function calc_data_vencimento($tipo_assinatura){
+    $data_inicio = new DateTime();
+    $data_vencimento = clone $data_inicio;
+
+    if ($tipo_assinatura === 'anual') {
+        $data_vencimento->modify('+1 year');
+    } else {
+        $data_vencimento->modify('+1 month');
+    }
+
+    return $data_vencimento_assinatura = $data_vencimento->format('Y-m-d H:i:s');
 }

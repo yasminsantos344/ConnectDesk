@@ -285,18 +285,18 @@
 
                     <div class="mb-2">
                         <label for="cartao_nome" class="form-label small mb-1"> Nome impresso no cartão</label>
-                        <input type="text" id="cartao_nome" class="form-control" placeholder="Como está no cartão">
+                        <input type="text" id="cartao_nome" name="nome_titular_banco" class="form-control" placeholder="Como está no cartão">
                     </div>
                     
                     <div class="mb-2">
                         <label for="cartao_validade" class="form-label small mb-1"> Data de validade</label>
-                        <input type="text" id="cartao_validade" name="data_vencimento_assinatura" class="form-control" placeholder="00/00" maxlength="5">
+                        <input type="text" id="cartao_validade" name="data_validade_cartao_banco" class="form-control" placeholder="00/00" maxlength="5">
                     </div>
 
                     <div class="row g-2 mb-3">
                         <div class="col-6">
                             <label for="cartao_cvv" class="form-label small mb-1"> CVV</label>
-                            <input type="text" id="cartao_cvv" class="form-control" placeholder="123" maxlength="3">
+                            <input type="text" id="cartao_cvv" name="codigo_seguranca_cartao_banco" class="form-control" placeholder="123" maxlength="3">
                         </div>
                     </div>
 
@@ -394,7 +394,6 @@
 
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
 <script src="../js/AJAX/cadastro-ajax.js"></script>
 <script src="../js/cadastro.js"></script>
 

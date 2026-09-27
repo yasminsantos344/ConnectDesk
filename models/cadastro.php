@@ -34,8 +34,8 @@ class AdministradorEmpresa{
         try{
         $stmt = $this->pdo->prepare($sql_adm);
         $stmt->execute([
-        ':email_adm' => $_POST['email_adm'],
-        ':senha_adm' => $_POST['senha_adm'],]);
+        ':email_adm' => $this->getEmailAdm(),
+        ':senha_adm' => $this->getSenhaAdm(),]);
 
         $id_adm = $this->pdo ->lastInsertId();
 
@@ -80,11 +80,11 @@ class Empresa{
         try{
         $stmt = $this->pdo->prepare($sql_empresa);
         $stmt->execute([
-        ':razao_social'         => $_POST['razao_social'],
-        ':cnpj'                 => $_POST['cnpj'],
-        ':nome_fantasia'        => $_POST['nome_fantasia'],
-        ':inscricao_estadual'   => $_FILES['inscricao_estadual'],
-        ':inscricao_municipal'  => $_FILES['inscricao_municipal'],
+        ':razao_social'         => $this->razao_social,
+        ':cnpj'                 => $this->getCnpj(),
+        ':nome_fantasia'        => $this->nome_fantasia,
+        ':inscricao_estadual'   => $this->inscricao_estadual,
+        ':inscricao_municipal'  => $this->inscricao_municipal,
         ':id_adm'               => $id_adm,]);
 
         $id_empresa = $this->pdo ->lastInsertId();
@@ -97,40 +97,62 @@ class Empresa{
     }
 }
 
-class Assinatura{
-
+class Assinatura
+{
     private $pdo;
-    public function __construct($pdo) {
+
+    public function __construct($pdo)
+    {
         $this->pdo = $pdo;
     }
+
     public $id_plano;
     public $modo_pagamento_assinatura;
     public $tipo_assinatura;
     public $qtd_parcelas_assinatura;
     public $data_vencimento_assinatura;
 
-    // Métodos
+    public function registrarAssinatura($id_empresa)
+    {
+        $sql = "INSERT INTO tb_assinatura (
+                    fk_id_empresa,
+                    fk_id_plano,
+                    status_assinatura,
+                    data_inicio_assinatura,
+                    data_vencimento_assinatura,
+                    modo_pagamento_assinatura,
+                    qtd_parcelas_assinatura,
+                    tipo_assinatura
+                )
+                VALUES (
+                    :id_empresa,
+                    :id_plano,
+                    'ATIVO',
+                    NOW(),
+                    :data_vencimento_assinatura,
+                    :modo_pagamento_assinatura,
+                    :qtd_parcelas_assinatura,
+                    :tipo_assinatura
+                )";
 
-    public function registrarAssinatura($id_empresa){
+        try {
+            $stmt = $this->pdo->prepare($sql);
 
-        $sql_assinatura = "INSERT INTO tb_assinatura (fk_id_empresa, fk_id_plano,status_assinatura, data_inicio_assinatura, data_vencimento_assinatura, modo_pagamento_assinatura, qtd_parcelas_assinatura)
-                VALUES(:id_empresa, :id_plano, 'ATIVO', NOW(), :data_vencimento_assinatura, :modo_pagamento_assinatura, :qtd_parcelas_assinatura)";
+            $stmt->execute([
+                ':id_empresa' => $id_empresa,
+                ':id_plano' => $this->id_plano,
+                ':data_vencimento_assinatura' => $this->data_vencimento_assinatura,
+                ':modo_pagamento_assinatura' => $this->modo_pagamento_assinatura,
+                ':qtd_parcelas_assinatura' => $this->qtd_parcelas_assinatura,
+                ':tipo_assinatura' => $this->tipo_assinatura
+            ]);
 
-        try{
-        $stmt = $this->pdo->prepare($sql_assinatura);
-        $stmt->execute([
-        ':id_empresa' => $id_empresa,
-        ':id_plano' => $_POST['id_plano'],
-        ':data_vencimento_assinatura' => $_POST['data_vencimento_assinatura'],
-        ':modo_pagamento_assinatura' => $_POST['modo_pagamento_assinatura'],
-        ':qtd_parcelas_assinatura' => $_POST['qtd_parcelas_assinatura']]);
+            return $this->pdo->lastInsertId();
 
-        $id_assinatura = $this->pdo ->lastInsertId();
-
-        return true;
-        }
-        catch(PDOException $e) {
-            echo "Erro: " . $e->getMessage();
+        } catch (PDOException $e) {
+            throw new Exception(
+                "Erro ao registrar assinatura: " . $e->getMessage()
+            );
         }
     }
 }
@@ -195,18 +217,17 @@ class DadosBancarios{
 
     public function cadastrarDadosBancarios($id_empresa){
 
-        $sql_dados_bancarios = "INSERT INTO tb_dados_bancarios (banco, bandeira_banco, nome_titular_banco, numero_cartao_banco, data_validade_cartao_banco, codigo_seguranca_cartao_banco, fk_id_empresa)
-                VALUES(:banco, :bandeira_banco, :nome_titular_banco, :numero_cartao_banco, :data_validade_cartao_banco, :codigo_seguranca_cartao_banco, :id_empresa)";
+        $sql_dados_bancarios = "INSERT INTO tb_dados_bancarios (nome_banco, bandeira_banco, nome_titular_banco, numero_cartao_banco, data_validade_cartao_banco, codigo_seguranca_cartao_banco, fk_id_empresa)
+                VALUES('Banco Teste', :bandeira_banco, :nome_titular_banco, :numero_cartao_banco, :data_validade_cartao_banco, :codigo_seguranca_cartao_banco, :id_empresa)";
 
         try{
         $stmt = $this->pdo->prepare($sql_dados_bancarios);
         $stmt->execute([
-        ':banco' => $_POST['banco'],
-        ':bandeira_banco' => $_POST['bandeira_banco'],
-        ':nome_titular_banco' => $_POST['nome_titular_banco'],
-        ':numero_cartao_banco' => $_POST['numero_cartao_banco'],
-        ':data_validade_cartao_banco' => $_POST['data_validade_cartao_banco'],
-        ':codigo_seguranca_cartao_banco' => $_POST['codigo_seguranca_cartao_banco'],
+        ':bandeira_banco' => $this->getBandeiraBanco(),
+        ':nome_titular_banco' => $this->getNomeTitularBanco(),
+        ':numero_cartao_banco' => $this->getNumeroCartaoBanco(),
+        ':data_validade_cartao_banco' => $this->getDataValidadeCartao(),
+        ':codigo_seguranca_cartao_banco' => $this->getCodigoSegurancaCartao(),
         ':id_empresa' => $id_empresa]);
 
         return true;

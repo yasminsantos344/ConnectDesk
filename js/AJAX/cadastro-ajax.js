@@ -4,12 +4,17 @@ function cadastro() {
     var dados = new FormData();
 
     // Formulário de dados da empresa
-    var formDados = document.getElementById('forms_dados');
-    var dadosEmpresa = new FormData(formDados);
+    var form_dados = document.getElementById('forms_dados');
+    var dadosEmpresa = new FormData(form_dados);
 
-    var dadosEmpresa = new FormData(formDados);
+    var forms_planos = document.getElementById('forms_planos');
+    var dadosPlanos = new FormData(forms_planos);
 
-    console.log("FORMULÁRIO:", formDados);
+    var forms_pagamento = document.getElementById('forms_pagamento');
+    var dadosPagamento = new FormData(forms_pagamento);
+
+    console.log("Dados da empresa: " + dadosEmpresa + " | Dados do plano: " + dadosPlanos + " | Dados do pagamento: " + dadosPagamento);
+
 
     for (let [chave, valor] of dadosEmpresa.entries()) {
         console.log(chave, "=", valor);
@@ -19,12 +24,24 @@ function cadastro() {
         dados.append(chave, valor);
     });
 
-    // Formulário de planos
-    var plano = $('#forms_planos input[name="plano"]:checked').val();
 
-    if (plano) {
-        dados.append('plano', plano);
+    for (let [chave, valor] of dadosPlanos.entries()) {
+        console.log(chave, "=", valor);
     }
+
+    dadosPlanos.forEach(function(valor, chave) {
+        dados.append(chave, valor);
+    });
+    
+
+    for (let [chave, valor] of dadosPagamento.entries()) {
+        console.log(chave, "=", valor);
+    }
+
+    dadosPagamento.forEach(function(valor, chave) {
+        dados.append(chave, valor);
+    });
+
 
     // Formulário de pagamento
     var formaPagamento = $('#forms_pagamento input[name="modo_pagamento_assinatura"]:checked').val();
@@ -49,7 +66,13 @@ function cadastro() {
 
     .done(function(dadosPHP) {
         console.log("Dados recebidos do servidor: " + dadosPHP);
-    })
+        successCard.classList.add("show");
+        
+        setTimeout(() => {
+            successCard.classList.remove("show");
+            window.location.href = "http://localhost/ConnectDesk/screen/login.html";
+            }, 4000);
+        })
 
     .fail(function(xhr) {
         console.log("Falha na solicitação");
