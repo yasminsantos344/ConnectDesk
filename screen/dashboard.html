@@ -97,66 +97,67 @@
                 <p class="card_resumo_valor">1005</p>
             </div>
         </div>
+      
+
+        <!--Tabela de chamados-->
+        <div class="dashboard_linha">
+          <section class="backlog">
+            <h2 class="secao_titulo">Backlog</h2>
+
+            <table class="tabela_backlog">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Motivo</th>
+                        <th>Abertura</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Motivo A</td>
+                        <td>01/02/2026</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Motivo B</td>
+                        <td>02/02/2026</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Motivo C</td>
+                        <td>03/02/2026</td>
+                    </tr>
+                </tbody>
+            </table>
+          </section>
+
+          <!--Tabela de resumo de chamados-->
+          <aside class="resumo_lateral">
+            <div class="resumo_item">
+              <span class="resumo_label">Finalizados:</span>
+              <span class="resumo_valor">92</span>
+            </div>
+
+            <div class="resumo_item">
+              <span class="resumo_label">Violados:</span>
+              <span class="resumo_valor">8</span>
+            </div>
+
+            <div class="resumo_item resumo_item_texto">
+              <span class="resumo_label">Tempo médio de resposta</span>
+              <span class="resumo_valor">18 min</span>
+            </div>
+
+            <div class="resumo_item resumo_item_texto">
+            <span class="resumo_label">Tempo médio de resolução</span>
+            <span class="resumo_valor">5h 42min</span>
+            </div>
+          </aside>
+        </div>
       </main>
-
-      <!--Tabela de chamados-->
-      <div class="dashboard_linha">
-        <section class="backlog">
-          <h2 class="secao_titulo">Backlog</h2>
-
-          <table class="tabela_backlog">
-              <thead>
-                  <tr>
-                      <th>Id</th>
-                      <th>Motivo</th>
-                      <th>Abertura</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>1</td>
-                      <td>Motivo A</td>
-                      <td>01/02/2026</td>
-                  </tr>
-                  <tr>
-                      <td>2</td>
-                      <td>Motivo B</td>
-                      <td>02/02/2026</td>
-                  </tr>
-                  <tr>
-                      <td>3</td>
-                      <td>Motivo C</td>
-                      <td>03/02/2026</td>
-                  </tr>
-              </tbody>
-          </table>
-        </section>
-
-        <!--Tabela de resumo de chamados-->
-        <aside class="resumo_lateral">
-          <div class="resumo_item">
-            <span class="resumo_label">Finalizados:</span>
-            </span class="resumo_valor">92</span>
-          </div>
-
-          <div class="resumo_item">
-            <span class="resumo_label">Violados:</span>
-            <span class="resumo_valor">8</span>
-          </div>
-
-          <div class="resumo_item resumo_item_texto">
-            <span class="resumo_label">Tempo médio de resposta</span>
-            <span class="resumo_valor">18 min</span>
-          </div>
-
-          <div class="resumo_item resumo_item_texto">
-          <span class="resumo_label">Tempo médio de resolução</span>
-          <span class="resumo_valor">5h 42min</span>
-          </div>
-        </aside>
-      </div>
-
     </div>
-    <Script src="/js/dashboard.js"></Script>
+  </div>
+    <script src="/js/dashboard.js"></Script>
 </body>
 </html>

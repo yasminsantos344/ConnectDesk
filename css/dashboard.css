@@ -103,6 +103,14 @@ body {
   gap: 16px;
   padding: 0 20px;
 }
+
+.user_chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
 .icone-perfil{
   width: 20rem;
   height: 15rem;
@@ -184,12 +192,11 @@ margin: 10px 30px;
 
 /*------------- tabela de chamados ----------------*/
 .backlog {
-background: var(--surface);
-border: 1px solid var(--border);
-border-radius: var(--radius);
-padding: 20px;
-margin: 1px 30px;
-width: 70%;
+  grid-column: span 3;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
 }
 
 .secao_titulo {
@@ -226,24 +233,29 @@ width: 70%;
 
 .dashboard_linha {
   display: grid;
-  grid-template-columns: 1fr 260px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
 }
 
 /*------------------Tabela resumo de chamados------------------*/
 
 
 .resumo_lateral {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 .resumo_item {
+  flex: 1;
   background: var(--accent);
   color: #fff;
-  border-radius: var(--radius);
+  border-radius: 20px;
   padding: 14px 16px;
   display: flex;
   justify-content: space-between;
